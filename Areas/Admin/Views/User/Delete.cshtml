@@ -1,0 +1,42 @@
+﻿@model PBL3Hos.Identity.AppUser
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayoutPage1.cshtml";
+}
+
+<h1>Delete</h1>
+<form action="/admin/user/delete/@Model.Id" method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <table class="table">
+        <tr>
+            <th>User Name</th>
+            <td>@Model.UserName</td>
+        </tr>
+
+        <tr>
+            <th>Email</th>
+            <td>@Model.Email</td>
+        </tr>
+
+        <tr>
+            <th>Mobile</th>
+            <td>@Model.PhoneNumber</td>
+        </tr>
+
+        <tr>
+            <th>Date of birth</th>
+            <td>@Model.Birthday</td>
+        </tr>
+
+        <tr>
+            <th>City</th>
+            <td>@Model.City</td>
+        </tr>
+    </table>
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="/admin/user/listuser" class="btn btn-dark">Cancel</a>
+</form>
+
+
+
+

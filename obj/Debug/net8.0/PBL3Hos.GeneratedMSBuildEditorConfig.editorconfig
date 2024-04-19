@@ -1,0 +1,123 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = PBL3Hos
+build_property.RootNamespace = PBL3Hos
+build_property.ProjectDir = E:\PBL3Hos\PBL3Hos\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = E:\PBL3Hos\PBL3Hos
+build_property._RazorSourceGeneratorDebug = 
+
+[E:/PBL3Hos/PBL3Hos/Areas/Admin/Views/Shared/AdminLayoutPage1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXEFkbWluTGF5b3V0UGFnZTEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PBL3Hos/PBL3Hos/Areas/Admin/Views/User/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PBL3Hos/PBL3Hos/Areas/Admin/Views/User/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PBL3Hos/PBL3Hos/Areas/Admin/Views/User/ListUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxMaXN0VXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PBL3Hos/PBL3Hos/Areas/Admin/Views/User/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PBL3Hos/PBL3Hos/Areas/Doctor/Views/Doctor/DoctorSchedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRG9jdG9yXFZpZXdzXERvY3RvclxEb2N0b3JTY2hlZHVsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PBL3Hos/PBL3Hos/Areas/Doctor/Views/Doctor/EditSchedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRG9jdG9yXFZpZXdzXERvY3RvclxFZGl0U2NoZWR1bGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PBL3Hos/PBL3Hos/Areas/Doctor/Views/Doctor/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRG9jdG9yXFZpZXdzXERvY3RvclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PBL3Hos/PBL3Hos/Areas/Doctor/Views/Doctor/ListAppointment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRG9jdG9yXFZpZXdzXERvY3RvclxMaXN0QXBwb2ludG1lbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PBL3Hos/PBL3Hos/Areas/Doctor/Views/Doctor/ScheduleOff.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRG9jdG9yXFZpZXdzXERvY3RvclxTY2hlZHVsZU9mZi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PBL3Hos/PBL3Hos/Areas/Doctor/Views/Doctor/ShowSchedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRG9jdG9yXFZpZXdzXERvY3RvclxTaG93U2NoZWR1bGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PBL3Hos/PBL3Hos/Areas/Doctor/Views/Shared/DoctorLayoutPage1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRG9jdG9yXFZpZXdzXFNoYXJlZFxEb2N0b3JMYXlvdXRQYWdlMS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PBL3Hos/PBL3Hos/Views/Account/Appointment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBcHBvaW50bWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PBL3Hos/PBL3Hos/Views/Account/Cancel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDYW5jZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PBL3Hos/PBL3Hos/Views/Account/EditAppointment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxFZGl0QXBwb2ludG1lbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PBL3Hos/PBL3Hos/Views/Account/ListAppointment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMaXN0QXBwb2ludG1lbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PBL3Hos/PBL3Hos/Views/Account/ListDoctor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMaXN0RG9jdG9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PBL3Hos/PBL3Hos/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PBL3Hos/PBL3Hos/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PBL3Hos/PBL3Hos/Views/Account/ShowInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxTaG93SW5mby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PBL3Hos/PBL3Hos/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PBL3Hos/PBL3Hos/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PBL3Hos/PBL3Hos/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PBL3Hos/PBL3Hos/Views/Shared/_LayoutPage1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRQYWdlMS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-f4c0jex3v1

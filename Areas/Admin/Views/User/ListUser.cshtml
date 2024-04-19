@@ -1,0 +1,46 @@
+﻿@using PBL3Hos.ViewModel
+@{
+    ViewData["Title"] = "ListUser";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayoutPage1.cshtml";
+}
+
+<h1>ListUser</h1>
+<a href=@Url.Action("Register","User")>Create new Product</a>
+
+<form class="d-flex flex-row align-items-center flex-wrap" style="margin-top: 20px;"
+      action="/admin/user/listuser">
+    @Html.Label("Search", "Search", new { @class = "mx-2 my-1" })
+    @Html.TextBox("Search", ViewBag.Search as string, new { @class = "form-control w-auto", placeholder = "Search" })
+    <button type="submit" class="btn btn-primary mx-2">GO</button>
+</form>
+<table class="table">
+    <tr>
+        <th>User Name</th>
+        <th>Password</th>
+        <th>Email</th>
+        <th>Number Phone</th>
+        <th>City</th>
+    </tr>
+    @foreach (var item in Model.users)
+    {
+        if (item.UserName!="admin@admin.com" && item.UserName!="Manager")
+        {
+            <tr>
+                <td>@item.UserName</td>
+                <td>@item.PasswordHash</td>
+                <td>@item.Email</td>
+                <td>@item.PhoneNumber</td>
+                <td>@item.City</td>
+                <td>
+                    @Html.ActionLink("Edit", "ListUser", new { id = item.Id, controller = "User" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id, controller = "User" })
+                </td>
+            </tr>
+        }
+    }
+</table>
+
+
+
+
+

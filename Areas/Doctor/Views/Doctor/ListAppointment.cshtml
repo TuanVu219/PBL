@@ -1,0 +1,37 @@
+﻿@model List<PBL3Hos.Models.DbModel.AppointmentDB>
+@{
+    ViewData["Title"] = "ListAppointment";
+    Layout = "~/Areas/Doctor/Views/Shared/DoctorLayoutPage1.cshtml";
+}
+
+<h1>ListAppointment</h1>
+@{
+    string iconClass = "";
+    if(ViewBag.IConClass=="fa-sort-down")
+    {
+        iconClass = "fa-sort-up";
+    }
+    else
+    {
+        iconClass = "fa-sort-down";
+    }
+}
+<table class="table">
+    <tr>
+       
+        <th>Patient UserName</th>
+        <th>
+            <a href="/doctor/doctor/listappointment?SortColumn=Date&IconClass=@iconClass">Date</a>
+            <i class="fas @ViewBag.IConClass"></i>
+            </th>
+        
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(row => item.Patient.AppUser.UserName)</td>
+            <td>@item.Date.ToString("dd/MM/yyyy HH:mm:ss")</td>
+          
+        </tr>
+    }
+</table>

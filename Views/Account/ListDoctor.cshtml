@@ -1,0 +1,12 @@
+﻿@model List<PBL3Hos.Identity.AppUser>
+@{
+    ViewData["Title"] = "ListDoctor";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h1>ListDoctor</h1>
+@foreach (var item in Model)
+{
+    <a href="/account/appointment/@item.Id">@item.UserName</a>
+}
+

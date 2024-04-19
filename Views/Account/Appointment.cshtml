@@ -1,0 +1,249 @@
+﻿@model PBL3Hos.Models.DbModel.AppointmentDB
+@{
+    ViewData["Title"] = "Appointment";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h1>Appointment</h1>
+<form action="/account/appointment" method="post">
+    <input type="hidden" name="DoctorId" value="@Model.DoctorId" />
+    <input type="hidden" name="PatientId" value="@Model.PatientId" />
+    <input type="hidden" name="id" value="@Model.Doctor.AccountId" />
+    <table class="table">
+        <tr>
+            <th>User Name</th>
+            <td>@Model.Doctor.AppUser.UserName</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>@Model.Doctor.AppUser.Email</td>
+         </tr>
+       
+      
+       
+
+    </table>
+    <div class="col-md-6">
+        <div class="col-md-6">
+            @Html.LabelFor(temp => temp.Date)
+            <input name="Date" id="Date" class="form-control" type="text" placeholder="Date" , value="@DateTime.Now.ToString("MM-dd-yyyy")" ,readonly onblur="checkDayOfWeek()" />
+            @Html.ValidationMessageFor(temp => temp.Date)
+        </div>
+    </div>
+    <div id="timeSelection3" class="col-md-6" style="display: none;">
+        <div class="col-md-6">
+            <label for="Time">Time</label>
+            <select class="form-control"
+                    id="Time"
+                    name="Starttime2">
+                <option value="">Please Select...</option>
+                <option value="7:00:00">7am-8am</option>
+                <option value="8:00:00">8am-9am</option>
+                <option value="9:00:00">9am-10am</option>
+                <option value="10:00:00">10am-11am</option>
+                <option value="13:00:00">1pm-2pm</option>
+                <option value="14:00:00">2pm-3pm</option>
+                <option value="15:00:00">3pm-4pm</option>
+                <option value="16:00:00">4pm-5pm</option>
+
+                <option value="19:00:00">7pm-8pm</option>
+                <option value="20:00:00">8pm-9pm</option>
+                <option value="21:00:00">9pm-10pm</option>
+
+            </select>
+        </div>
+    </div>
+    <div id="timeSelection" class="col-md-6" style="display: none;">
+        <div class="col-md-6">
+            <label for="Time">Time</label>
+            <select class="form-control"
+                    id="Time"
+                    name="Starttime"
+            >
+                <option value="">Please Select...</option>
+                <option value="07:00:00">7am-8am</option>
+                <option value="08:00:00">8am-9am</option>
+                <option value="09:00:00">9am-10am</option>
+                <option value="10:00:00">10am-11am</option>
+                <option value="13:00:00">1pm-2pm</option>
+                
+            </select>
+        </div>
+    </div>
+
+    <div id="timeSelection1" class="col-md-6" style="display: none;">
+        <div class="col-md-6">
+            <label for="Time">Time</label>
+            <select class="form-control"
+                    id="Time"
+                    name="Starttime1"
+                    >
+                <option value="">Please Select...</option>
+                <option value="13:00:00">1pm-2pm</option>
+                <option value="14:00:00">2pm-3pm</option>
+                <option value="15:00:00">3pm-4pm</option>
+                <option value="16:00:00">4pm-5pm</option>
+            </select>
+        </div>
+    </div>
+    <div id="timeSelection2" class="col-md-6" style="display: none;">
+        <div class="col-md-6">
+            <label for="Time">Time</label>
+            <select class="form-control"
+                    id="Time"
+                    name="Starttime3"
+                    >
+                <option value="">Please Select...</option>
+                <option value="19:00:00">7pm-8pm</option>
+                <option value="20:00:00">8pm-9pm</option>
+                <option value="21:00:00">9pm-10pm</option>
+               
+            </select>
+        </div>
+    </div>
+
+   
+
+    <p class="text-danger">@ViewBag.Error</p>
+    <button type="submit" class="btn btn-success">Register</button>
+</form>
+
+<a href=@Url.Action("Index","Home")>Back</a>
+
+<script>
+    $(function () {
+     
+        // Lấy danh sách ngày và ca làm việc từ ViewBag
+        var doctorAvailability = {
+    @foreach (var item in ViewBag.DoctorAvailability)
+    {
+        <text>
+                '@item.Key': '@item.Value',
+        </text> 
+    }
+            };
+
+
+    var doctorAppointment = {
+@foreach (var item in ViewBag.DoctorAppointment)
+{
+    <text>'@item.Key':
+    [@foreach (var value in item.Value) {
+        <text>'@value', </text> 
+    }], </text>
+}
+};
+    // Hàm kiểm tra xem ngày được chọn có trong danh sách ca làm việc không
+    function isAvailableDay(dayOfWeek) {
+        return doctorAvailability.hasOwnProperty(dayOfWeek);
+    }
+
+    function isAvailableTime(timeOfWeek) {
+        return doctorAppointment.hasOwnProperty(timeOfWeek);
+    }
+    var bookedDates = [@Html.Raw(ViewBag.BookedDates)];
+    function checkDayOfWeek() {
+        var inputDate = document.getElementById('Date').value;
+        var dateParts = inputDate.split('-');
+        var selectedDate = new Date(dateParts[2], parseInt(dateParts[0]) - 1, dateParts[1]);
+
+        // Lấy tên thứ của ngày được chọn
+        var dayOfWeekNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        var selectedDayOfWeek = dayOfWeekNames[selectedDate.getDay()];
+
+        var timeSelection = document.getElementById('timeSelection');
+        var timeSelection1 = document.getElementById('timeSelection1');
+        var timeSelection2 = document.getElementById('timeSelection2');
+        var timeSelection3 = document.getElementById('timeSelection3');
+
+        // Kiểm tra xem ngày được chọn có trong danh sách ca làm việc hay không
+        if (isAvailableDay(selectedDayOfWeek)) {
+            // Hiển thị dropdownlist phù hợp với ngày được chọn
+            if (doctorAvailability[selectedDayOfWeek] === "Day") {
+                timeSelection.style.display = 'block';
+                timeSelection1.style.display = 'none';
+                timeSelection2.style.display = 'none';
+                timeSelection3.style.display = 'none';
+                hideAppointments(inputDate);
+                
+
+            } else if (doctorAvailability[selectedDayOfWeek] === "Afternoon") {
+                timeSelection.style.display = 'none';
+                timeSelection1.style.display = 'block';
+                timeSelection2.style.display = 'none';
+                timeSelection3.style.display = 'none';
+                hideAppointments(inputDate);
+            }
+            else if (doctorAvailability[selectedDayOfWeek] === "Night") {
+                timeSelection.style.display = 'none';
+                timeSelection1.style.display = 'none';
+                timeSelection2.style.display = 'block';
+                timeSelection3.style.display = 'none';
+                hideAppointments(inputDate);
+            }
+            else {
+                timeSelection.style.display = 'none';
+                timeSelection1.style.display = 'none';
+                timeSelection2.style.display = 'none';
+                timeSelection3.style.display = 'block';
+                hideAppointments(inputDate);
+            }
+
+
+
+        } else {
+            // Ẩn dropdownlist nếu ngày không có trong danh sách ca làm việc
+            timeSelection.style.display = 'none';
+            timeSelection1.style.display = 'none';
+            timeSelection2.style.display = 'none';
+            timeSelection3.style.display = 'none';
+        }
+    }
+
+    
+    var disabledDates = @Html.Raw(ViewBag.BookedDatesJson);
+    function disableDates(date) {
+        var string = jQuery.datepicker.formatDate('mm-dd-yy', date);
+        return [disabledDates.indexOf(string) == -1];
+    }
+
+    $("#Date").datepicker({
+        dateFormat: 'mm-dd-yy',
+        minDate:0,
+        beforeShowDay: disableDates,
+        onSelect: function (dateText, inst) {
+            checkDayOfWeek();
+        }
+    });
+  function hideAppointments(selectedDate) {
+    var appointments = doctorAppointment[selectedDate];
+
+        if (appointments) {
+        // Lặp qua tất cả các dropdownlist và ẩn các mục có giá trị trong danh sách appointments
+            $('select[name="Starttime"] option, select[name="Time"] option,select[name="Starttime1"] option,select[name="Starttime2"] option,select[name="Starttime3"] option').each(function () {
+            var optionValue = $(this).val().toString();
+                if (appointments.includes(optionValue)) {
+                // Ẩn các mục không phải của ngày được chọn
+                if (selectedDate === $('#Date').val()) {
+                    $(this).prop('disabled', true);
+                } else {
+                    $(this).prop('disabled', false);
+                }
+            } else {
+                // Hiển thị lại các mục cho ngày được chọn
+                if (selectedDate === $('#Date').val()) {
+                    $(this).prop('disabled', false);
+                }
+            }
+        });
+    } else {
+        // Hiển thị lại tất cả các mục nếu không có cuộc hẹn nào được đặt cho ngày này
+            $('select[name="Starttime"] option, select[name="Time"] option,select[name="Starttime1"] option,select[name="Starttime2"] option,select[name="Starttime3"').prop('disabled', false);
+    }
+}
+            });
+    
+    
+
+
+</script>

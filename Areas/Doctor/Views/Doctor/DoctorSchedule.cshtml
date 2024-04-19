@@ -1,0 +1,74 @@
+﻿@model PBL3Hos.Models.DbModel.DoctorAvailability
+@{
+    ViewData["Title"] = "DoctorSchedule";
+    Layout = "~/Areas/Doctor/Views/Shared/DoctorLayoutPage1.cshtml";
+}
+
+<h1>Doctor Schedule</h1>
+<form action="/doctor/doctor/doctorschedule" method="post">
+    @{
+        // Định nghĩa cấu trúc dữ liệu cho các ca làm việc tương ứng với mỗi ngày
+        Dictionary<string, List<string>> shiftMap = new Dictionary<string, List<string>>
+    {
+    {"Monday", new List<string>{"Day","Afternoon", "Night", "AllDay"}},
+    {"Tuesday", new List<string>{"Day","Afternoon", "Night", "AllDay"}},
+    {"Wednesday", new List<string>{"Day","Afternoon", "Night", "AllDay"}},
+    {"Thursday", new List<string>{"Day","Afternoon", "Night", "AllDay"}},
+    {"Friday", new List<string>{"Day","Afternoon", "Night", "AllDay"}},
+    {"Saturday", new List<string>{"Day","Afternoon", "Night", "AllDay"}},
+    {"Sunday", new List<string>{"Day","Afternoon", "Night", "AllDay"}}
+    };
+    }
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Shift</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var entry in shiftMap)
+            {
+                <tr>
+                   
+                    <td>
+                        <input type="checkbox" name="AvailableDay[@entry.Key]" value="@entry.Key" />
+                        <label>@entry.Key</label>
+                    </td>
+                    <td>
+                        @foreach (var shift in entry.Value)
+                        {
+                            <input type="radio" name="Shift[@entry.Key]" value="@shift" />
+                            <label>@shift</label>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <button type="submit" class="btn btn-success">Register</button>
+</form>
+
+<script>
+    var availableDays = document.querySelectorAll('input[name^="AvailableDay"]');
+    var shiftRadios = document.querySelectorAll('.shift-radio');
+
+    availableDays.forEach(function (checkbox) {
+        checkbox.addEventListener('change', function () {
+            var day = this.value;
+            var relatedShiftRadios = document.querySelectorAll('.shift-radio[data-day="' + day + '"]');
+            if (this.checked) {
+                relatedShiftRadios.forEach(function (radio) {
+                    radio.removeAttribute('disabled');
+                });
+            } else {
+                relatedShiftRadios.forEach(function (radio) {
+                    radio.setAttribute('disabled', 'disabled');
+                    radio.checked = false; // Uncheck the radio buttons
+                });
+            }
+        });
+    });
+</script>

@@ -1,0 +1,123 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\PBL3Hos\\PBL3Hos\\PBL3Hos.csproj": {}
+  },
+  "projects": {
+    "E:\\PBL3Hos\\PBL3Hos\\PBL3Hos.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\PBL3Hos\\PBL3Hos\\PBL3Hos.csproj",
+        "projectName": "PBL3Hos",
+        "projectPath": "E:\\PBL3Hos\\PBL3Hos\\PBL3Hos.csproj",
+        "packagesPath": "C:\\Users\\LAPTOP\\.nuget\\packages\\",
+        "outputPath": "E:\\PBL3Hos\\PBL3Hos\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\LAPTOP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Bootstrap": {
+              "target": "Package",
+              "version": "[5.3.3, )"
+            },
+            "Bootstrap.v3.Datetimepicker": {
+              "target": "Package",
+              "version": "[4.17.49, )"
+            },
+            "Bootstrap.v3.Datetimepicker.CSS": {
+              "target": "Package",
+              "version": "[4.17.49, )"
+            },
+            "Font.Awesome": {
+              "target": "Package",
+              "version": "[5.15.4, )"
+            },
+            "FontAwesome": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "jQuery": {
+              "target": "Package",
+              "version": "[3.7.1, )"
+            },
+            "jQuery.UI.Combined": {
+              "target": "Package",
+              "version": "[1.13.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

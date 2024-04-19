@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.7.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+    <style>
+        .field-validation-error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+ 
+    <nav class="navbar navbar-expand-sm bg-info navbar-dark">
+        <a class="navbar-brand" href="#">Doctor</a>
+        <div class="col-8">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/doctor/home/index">Home</a>
+                </li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" href="/account/logout">Log Out</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/doctor/doctor/listappointment">List Appointment</a>
+                    </li>
+                 
+                        <li class="nav-item">
+                            <a class="nav-link" href="/doctor/doctor/doctorschedule ">Schedule</a>
+                        </li>
+                    
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/doctor/doctor/showschedule ">Show Schedule</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/doctor/doctor/scheduleoff ">Schedule Off</a>
+                    </li>
+                }
+
+            </ul>
+        </div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div style="color:red; font-weight:bold">
+                <a href="/account/showinfo">Hello @User.Identity.Name</a>
+            </div>
+        }
+    </nav>
+    <div class="container-fluid">
+
+        <div class="col-10" style="min-height:610px">
+            @RenderBody()
+        </div>
+</body>
+</html>

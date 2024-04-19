@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewData["Title"] = "ScheduleOff";
+    Layout = "~/Areas/Doctor/Views/Shared/DoctorLayoutPage1.cshtml";
+}
+
+<h1>ScheduleOff</h1>
+<form action="/doctor/doctor/scheduleoff" method="post">
+    <input type="hidden" name="DoctorId" value="@ViewBag.DoctorId" />
+   
+    
+ 
+    <table class="table">
+        <tr>
+            <div class="col-md-6">
+               <label for="DateOff"></label>
+                <input type="date"
+                       class=form-control"
+                       id="DateOff"
+                       name="DateOff" />
+            </tr>
+        </div>
+    </table>
+   
+   
+    <button type="submit" class="btn btn-success">Register</button>
+</form>
+
+<a href=@Url.Action("Index","Home")>Back</a>

@@ -1,0 +1,27 @@
+﻿@model PBL3Hos.Models.DbModel.AppointmentDB
+
+@{
+    ViewData["Title"] = "Cancel";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h1>Cancel</h1>
+<form action="/account/cancel/@Model.PatientId" method="post">
+    <input type="hidden" name="PatientId" value="@Model.PatientId" />
+   
+    <table class="table">
+        <tr>
+            <th>User Doctor</th>
+            <td>@Model.Doctor.AppUser.UserName</td>
+        </tr>
+
+        <tr>
+            <th>Date</th>
+            <td>@Model.Date.ToString("dd/MM/yyyy")</td>
+        </tr>
+
+        
+    </table>
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="/home/index" class="btn btn-dark">Cancel</a>
+</form>

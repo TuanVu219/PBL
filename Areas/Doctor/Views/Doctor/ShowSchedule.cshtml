@@ -1,0 +1,29 @@
+﻿@model List<PBL3Hos.Models.DbModel.DoctorAvailability>
+@{
+    ViewData["Title"] = "ShowSchedule";
+    Layout = "~/Areas/Doctor/Views/Shared/DoctorLayoutPage1.cshtml";
+}
+
+<h1>ShowSchedule</h1>
+<table class="table">
+    <tr>
+
+        <th>DayOfWeek</th>
+        <th>Shift</th>
+        <th>Time</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.AvailableDate</td>
+            <td>@item.Shift</td>
+            <td>@item.StartTime-@item.EndTime</td>
+
+
+        </tr>
+    }
+</table>
+<a href="/doctor/doctor/EditSchedule">Edit Schedule</a>
+
+

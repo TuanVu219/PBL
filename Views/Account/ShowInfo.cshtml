@@ -1,0 +1,39 @@
+﻿@using PBL3Hos.Models
+@{
+    ViewData["Title"] = "ShowInfo";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h1>ShowInfo</h1>
+<table class="table">
+    <tr>
+        <th>User Name</th>
+        <td>@Model.UserName</td>
+    </tr>
+
+    <tr>
+        <th>Email</th>
+        <td>@Model.Email</td>
+    </tr>
+
+    <tr>
+        <th>Mobile</th>
+        <td>@Model.Mobile</td>
+    </tr>
+
+    <tr>
+        <th>Date of birth</th>
+        <td>@Model.DateofBirth</td>
+    </tr>
+
+    <tr>
+        <th>City</th>
+        <td>@Model.City</td>
+    </tr>
+</table>
+
+<a href=@Url.Action("Index","Home")>Back</a>
+
+
+
+
