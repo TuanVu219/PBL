@@ -1,0 +1,382 @@
+﻿/* css login signout */
+.div-log {
+    background-image: url("/assets/img/backgroundLOGIN.jpg");
+    background-size: cover;
+    background-color: #67b9fc;
+}
+
+.background-log {
+    animation: animationIfUser ease .5s;
+
+    width: 100%;
+    height: 100vh;
+    backdrop-filter: blur(10px);
+}
+
+.frame-log {
+    position: absolute;
+    width: 1000px;
+    height: 500px;
+    transform: translateX(25%);
+    top: 10%;
+    border-radius: 10px;
+    border: 1px solid;
+    box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.5);
+    display: flex;
+    overflow: hidden;
+}
+
+.backgroundAnimation {
+    position: absolute;
+    margin-left: 528px;
+    height: 100%;
+    width: 100%;
+    background-color: #abe2eb;
+    /* background-image: url("/assets/img/5778669.jpg");
+    background-size: cover; */
+    /* background: linear-gradient(90deg,var(--color1),var(--color6),var(--color6),var(--color6),var(--color6),var(--color6),var(--color6),var(--color6),var(--color6),var(--color1)); */
+}
+
+.frame-log .nav-left {
+    background-color: #90e0ef;
+    /* background-image: url("/assets/img/5778668.jpg"); */
+    height: 100%;
+    width: 70%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    /* background: linear-gradient(90deg,var(--color1),var(--color1),var(--color1),var(--color1),var(--color1),#158fe1); */
+}
+
+    .frame-log .nav-left ul {
+        margin-left: 20px;
+        width: 70%;
+    }
+
+    .frame-log .nav-left .name-web {
+        margin: 80px 0;
+    }
+
+    .frame-log .nav-left h1 {
+        margin-bottom: 5px;
+    }
+
+    .frame-log .nav-left .welcome-web {
+        margin-top: 5px;
+    }
+
+    .frame-log .nav-left i {
+        font-size: 20px;
+        margin: 10px 5px;
+    }
+
+.ok {
+    margin-left: 520px;
+    margin-right: 100px;
+    height: 100%;
+    display: flex;
+}
+
+.ok1 {
+    margin: 0 58px;
+}
+
+.ok2 {
+    margin: 0 100px;
+    display: flex;
+}
+
+.frame-log .nav-left .icon-log-left {
+    margin: 10px 0;
+}
+
+.frame-log .nav-right {
+    position: absolute;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    /* border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px; */
+}
+
+    .frame-log .nav-right .frame-nav-right {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        margin: 0 50px;
+        color: rgba(0, 0, 0, 0.9);
+    }
+
+.frame-log .close-log i {
+    font-size: 30px;
+    position: absolute;
+    cursor: pointer;
+    color: #3b3b3b;
+    right: 15px;
+    z-index: 9999;
+}
+
+    .frame-log .close-log i:hover {
+        color: black;
+    }
+
+.frame-log .frame-nav-right h2 {
+    text-align: center;
+    font-size: 30px;
+    margin: 50px 0;
+}
+
+.h2Signin {
+    position: absolute;
+    width: 100%;
+    transform: translateX(153px);
+    font-size: 35px !important;
+    margin: -12px 0 !important;
+   top:20px;
+   font-weight:600;
+}
+
+.frame-log .frame-nav-right .input-box {
+    position: relative;
+    width: 300px;
+    height: 50px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.9);
+    margin: 30px 0;
+}
+
+    .frame-log .frame-nav-right .input-box input {
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        border: none;
+        outline: none;
+        font-weight: 400;
+        padding: 0 20px;
+    }
+
+    .frame-log .frame-nav-right .input-box label {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        font-size: 16px;
+        font-weight: 500;
+        pointer-events: none;
+        transition: .5s ease;
+    }
+
+    .frame-log .frame-nav-right .input-box input:focus ~ label,
+    .frame-log .frame-nav-right .input-box input:valid ~ label {
+        top: -6px;
+    }
+
+    .frame-log .frame-nav-right .input-box .icon {
+        position: absolute;
+        right: 0;
+        top: 15px;
+        font-size: 20px;
+    }
+
+.remember-fogot {
+    font-size: 14.5px;
+    font-weight: 500;
+    margin: -15px 0 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+    .remember-fogot label input {
+        cursor: pointer;
+        accent-color: rgba(0, 0, 0, 0.5);
+        margin-right: 3px;
+    }
+
+    .remember-fogot a {
+        color: #0095ff;
+        text-decoration: none;
+    }
+
+        .remember-fogot a:hover {
+            text-decoration: underline;
+        }
+
+.frame-log .frame-nav-right .btn {
+    width: 100%;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.868);
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+    .frame-log .frame-nav-right .btn:hover {
+        background-color: #0095ff;
+    }
+
+    .frame-log .frame-nav-right .btn.btn-signin {
+        position: absolute;
+        transform: translateX(40%);
+        margin-top:30px;
+    }
+
+.frame-log .frame-nav-right .login-register {
+    font-size: 14.5px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.frame-log .frame-nav-right .login-register2 {
+    margin-top: -15px;
+}
+
+.frame-log .frame-nav-right .login-register p a {
+    font-weight: 600;
+    text-decoration: none;
+    color: #0095ff;
+}
+
+    .frame-log .frame-nav-right .login-register p a:hover {
+        text-decoration: underline;
+    }
+
+.frame-nav-right.frame-nav-right2 {
+    margin-top: 44px !important;
+}
+/* base */
+.div-user.open {
+    display: flex;
+}
+
+.div-log.open {
+    display: flex;
+}
+
+.show-doctor-inf.open {
+    transform: translateX(0);
+}
+
+@keyframes animationIfUser {
+    from {
+        transform: translateY(-300px);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+.okMoveLeft {
+    transform: translateX(-266%);
+    transition: transform .6s ease;
+}
+
+.okMoveRight {
+    transform: translateX(0);
+    transition: transform .6s ease;
+}
+
+:root {
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
+    --color0-5: #c0e7ef;
+    --color1: #caf0f8;
+    --color2: #90e0ef;
+    --color3: #00b4d8;
+    --color4: #0077b6;
+    --color5: #03045e;
+    --color6: #41a0df;
+}
+
+.bgrMoveLeft {
+    transform: translateX(-53%);
+    transition: transform .6s ease;
+}
+
+.bgrMoveRight {
+    transform: translateX(0);
+    transition: transform .6s ease;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62,5%;
+    line-height: 1.6rem;
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+}
+
+.grid {
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.grid__full-width {
+    width: 100%;
+}
+
+.grid__row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.fa-chevron-down {
+    font-size: 12px;
+}
+.size-form{
+    width:700px;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0 !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: auto;
+    cursor: pointer;
+}
+
+/* Ẩn placeholder */
+input[type="date"]::placeholder {
+    /* Đặt placeholder là một giá trị không hiển thị */
+    color: transparent;
+}
+
+/* Thêm kiểu cho nút hoặc biểu tượng mở lịch */
+#calendar-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+input[type="date"] {
+    margin-left: 90px;
+    margin-top: 5px;
+    width: 234px !important;
+    cursor: pointer;
+    position: absolute;
+    z-index: 99;
+}
+
+
+.pt{
+    cursor:pointer;
+}

@@ -1,7 +1,137 @@
-﻿@{
+﻿@model List<PBL3Hos.Models.DbModel.AppointmentCancel>
+
+@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<h1>Index</h1>
+
+<!-- Page Content  -->
+<link rel="stylesheet" href="~/css/homePage.css?v=1" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/index.css?v=7" asp-append-version="true" />
+
+
+<div>
+    <div class="content-container">
+        <div class="banner-container">
+            <div class="banner-left">
+                <h1>WellCare Nurturing Health, Inspiring Life</h1>
+                <p>Empowering wellness through comprehensive care. Discover the journey to vibrant health and an inspired life with wellcare health</p>
+                <a href="/account/listdoctor"><button class="btn btn2">Appointment</button></a>
+            </div>
+            <div class="banner-right">
+                <img src="https://assets-global.website-files.com/64b0d564635cb0e2d09ac7dd/64e2f2e0479cad5b74a9e51a_hero-img.png" alt="">
+            </div>
+            <div class="wrap-box">
+                <div class="row-1">
+                    <div class="group"><i class="fa-solid fa-magnifying-glass icon"></i><input class="input" type="search" placeholder="Search" /></div>
+                   <!-- thong bao -->
+                    @if (User.Identity.IsAuthenticated){
+                    <div class="notification-bell">
+                        <i class="fa fa-bell icond-otifications notif js-open-notification"><small class="d-flex align-items-center justify-content-center"></small></i>
+                        <span class="notification-count">@ViewBag.UnseenCount</span>
+                    </div>
+                    <div class="js-container-notification">
+                        <div class="notification-container ">
+                            <i class="fa-solid fa-xmark js-close-notification"></i>
+                            @if (ViewBag.Notifications != null)
+                            {
+                                @foreach (var item in ViewBag.Notifications)
+                                {
+                                   @if(item.Availabale=="Seen"){
+                                    <div class="notification-line">
+                                        <div class="doctor-notification">
+                                                    <img src="~/PatientsIMG/@item.Doctor.ImgFile" alt="">
+                                            <h4>Doctor: @item.FullnameDoctor</h4>
+                                        </div>
+                                        <p>@item.FullnameDoctor đã hủy lịch khám mà bạn đã đặt vào ngày @item.Date.</p>
+                                        <div class="line"></div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="notification-line2">
+                                            <div class="doctor-notification">
+                                                <img src="./fonts/customer01.jpg" alt="">
+                                                <h4>Doctor: @item.FullnameDoctor</h4>
+                                            </div>
+                                            <p>@item.FullnameDoctor đã hủy lịch khám mà bạn đã đặt vào ngày @item.Date.</p>
+                                            <div class="line"></div>
+                                        </div>
+                                    }
+                                }
+                            }
+                        </div>
+                    </div>
+                    }
+                    <!-- /thong bao -->
+                </div>
+                <div class="top-box">
+                    <div class="hf-text">15+</div>
+                    <div>Years of Experience</div>
+                </div>
+                <div class="bottom-box">
+                    <div class="hf-text">18+</div>
+                    <div>Operation Specialist</div>
+                </div>
+            </div>
+        </div>
+        <div class="content-card-img">
+            <div class="card-container">
+                <div class="wrap-about">
+                    <h1>The Best Doctors</h1>
+                    <p> Our hospital prides itself on having a team of dedicated, experienced doctors who are committed to providing the best healthcare to every patient. With us, you will be welcomed and cared for by leading medical experts in their fields.</p>
+                    <a href="/account/listdoctor1"><button class="btn btn2">Other doctors</button></a>
+                </div>
+
+                @foreach (var item in ViewBag.DoctorRate)
+                {
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img class="boder-radius-img" src="~/PatientsIMG/@item.ImgFile" alt="">
+                                <p class="title">@item.Fullname</p>
+                                <p>Specialty: @item.Specialist</p>
+                            </div>
+                            <div class="flip-card-back">
+                                <p class="title">@item.Fullname</p>
+                                <p><strong>Position: </strong>Doctor</p>
+                                <p><strong>Qualification: </strong>@item.qualification</p>
+                                <p><strong>Experience: </strong>@item.yearofexperience</p>
+                                <a href="/account/infodoctor/@item.AppUser.Id"><button class="btn">see more</button></a>
+                            </div>
+                        </div>
+                    </div>
+                
+                }
+
+             
+            </div>
+            <div class="img-container"></div>
+        </div>
+        <div class="banner-container banner-container-3">
+            <div class="banner-left">
+                <h1>Essential Helpline Services</h1>
+                <p>We understand that emergencies can happen unexpectedly. Put our emergency contact information in your reach and take comfort in knowing that you have a reliable ally by your side.</p>
+            </div>
+            <div class="banner-right">
+                <img src="https://assets-global.website-files.com/64b0d564635cb0e2d09ac7dd/64df4fd41bbf90309dad5fb9_cta-p-500.png" alt="">
+            </div>
+            <div class="wrap-box-call">
+                <ul>
+                    <strong>Helpline Number: </strong>
+                    <li>0385-403-953</li>
+                </ul>
+                <ul>
+                    <strong>Appointment: </strong>
+                    <li>appointment@wellcare.com</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/index.js?v=4"></script>
+
+
+
 

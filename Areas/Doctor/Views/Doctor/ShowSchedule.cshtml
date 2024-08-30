@@ -1,29 +1,79 @@
-﻿@model List<PBL3Hos.Models.DbModel.DoctorAvailability>
-@{
+﻿@{
     ViewData["Title"] = "ShowSchedule";
     Layout = "~/Areas/Doctor/Views/Shared/DoctorLayoutPage1.cshtml";
 }
 
-<h1>ShowSchedule</h1>
-<table class="table">
+@* <table class="table">
     <tr>
 
         <th>DayOfWeek</th>
-        <th>Shift</th>
         <th>Time</th>
 
     </tr>
-    @foreach (var item in Model)
+    @foreach (var item in ViewBag.DoctorSchedule)
     {
         <tr>
-            <td>@item.AvailableDate</td>
-            <td>@item.Shift</td>
-            <td>@item.StartTime-@item.EndTime</td>
-
+            <td>@item.Key</td>
+            
+                <td>
+                <ul>
+                    @foreach (var timeTuple in item.Value)
+                    {
+                        <li>@timeTuple.Item1-@timeTuple.Item2</li>
+                    }
+                </ul>   
+                </td>
+            
 
         </tr>
     }
 </table>
 <a href="/doctor/doctor/EditSchedule">Edit Schedule</a>
+ *@
+<link rel="stylesheet" href="~/css/ShowSchedule.css?v=1">
 
+    <div class="show-schedule">
+        <header class="show-schedule-header">
+            Show Schedule
+            <a href="/doctor/doctor/editschedule">
+            <button onclick="navigateToEdit()" class="edit-btn">
+                Edit Schedule
+            </button>
+        </a>
+        </header>
+        <div class="schedule-list">
+            <table>
+                <thead>
+                    <tr>
+                        <td>Day of Week</td>
+                        <td>Time</td>
+                    </tr>
+                </thead>
+                <tbody>
+                      @foreach (var item in ViewBag.DoctorSchedule)
+                     {
+                    <tr>
+                        <td>@item.Key</td>
+                        <td>
+                            <ul>
+                                    @foreach (var timeTuple in item.Value)
+                                    {
+                                        <li>@timeTuple.Item1-@timeTuple.Item2</li>
+                                    }
+                            </ul>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+<!-- =========== Scripts =========  -->
+<script src="~/js/main1.js"></script>
+<script src="~/js/navigateToPage.js"></script>
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 

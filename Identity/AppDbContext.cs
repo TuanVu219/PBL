@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using PBL3Hos.Models.DbModel;
+using System.Reflection.Emit;
 namespace PBL3Hos.Identity
 {
     public class AppDbContext : IdentityDbContext<AppUser>
@@ -14,6 +15,13 @@ namespace PBL3Hos.Identity
         public DbSet<DoctorAvailability> DoctorAvailabilities { get; set; }
         public DbSet<DoctorSchedule>DoctorSchedules { get; set; }
         public DbSet<DoctorDayOff> DoctorDayOffs { get; set; }
+        public DbSet<AppointmentHistory> AppointmentHistory { get; set; }
+        public DbSet<Statistic> Statistics { get; set; }
+        public DbSet<Rating>Ratings {  get; set; }
+        public DbSet<AppointmentCancel> AppointmentCancels { get; set; }
+        
+        public DbSet<Specialist> Specialists {  get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
@@ -30,6 +38,43 @@ namespace PBL3Hos.Identity
                 .HasOne(a => a.Patient)
                 .WithOne(a => a.Appointment)
                 .HasForeignKey<AppointmentDB>(a => a.PatientId);
+
+            builder.Entity<AppointmentHistory>()
+                 .HasOne(a => a.Doctor)
+                 .WithMany()
+                 .HasForeignKey(a => a.DoctorId)
+                 .OnDelete(DeleteBehavior.Restrict); // or DeleteBehavior.NoAction, depending on your requirements
+
+            builder.Entity<AppointmentHistory>()
+                .HasOne(a => a.Patient)
+                .WithMany()
+                .HasForeignKey(a => a.PatientId)
+                .OnDelete(DeleteBehavior.Restrict); // or DeleteBehavior.NoAction, depending on your requirements
+
+
+            builder.Entity<Rating>()
+                 .HasOne(a => a.Doctor)
+                 .WithMany(a => a.Ratings)
+                 .HasForeignKey(a => a.DoctorId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Rating>()
+                .HasOne(a => a.Patient)
+                .WithMany(a => a.Ratings)
+                .HasForeignKey(a => a.PatientId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<AppointmentCancel>()
+               .HasOne(a => a.Doctor)
+               .WithMany(a => a.AppointmentCancels)
+               .HasForeignKey(a => a.DoctorId)
+          .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<AppointmentCancel>()
+                .HasOne(a => a.Patient)
+                .WithMany(a => a.AppointmentCancels)
+                .HasForeignKey(a => a.PatientId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
 
 

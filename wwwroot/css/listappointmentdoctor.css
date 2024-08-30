@@ -1,0 +1,12 @@
+﻿
+.patient-list #sortButton {
+    border: none;
+    margin: 2px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.patient-list table tbody tr td:last-child {
+    text-align: center;
+    padding: 0;
+}

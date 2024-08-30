@@ -15,14 +15,31 @@ namespace PBL3Hos.Models.DbModel
 
             public string NameDoctor { get; set; }
             public string Phone { get; set; }
+             public string Fullname { get; set; }
+             public string? Career {  get; set; }
+            public string Specialist {  get; set; }
 
-            // Khóa ngoại trỏ đến khóa chính trong một bảng khác (AspNetUsers)
+            public string? qualification { get; set; }
+            public string? yearofexperience { get; set; }
 
-            [ForeignKey("AppUser")]
+            public string? studyprocess {  get; set; }
+
+             public string? ImgFile { get; set; }
+
+        public double DoctorRate { get; set; } = 0;
+
+        // Khóa ngoại trỏ đến khóa chính trong một bảng khác (AspNetUsers)
+
+        [ForeignKey("AppUser")]
             public string AccountId { get; set; }
             public AppUser AppUser { get; set; }
 
             public ICollection<AppointmentDB> Appointments { get; set; }
-        }
-    
+             public ICollection<Rating> Ratings { get; set; }
+
+        public ICollection<AppointmentCancel> AppointmentCancels { get; set; }
+
+
+    }
+
 }

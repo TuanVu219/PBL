@@ -1,8 +1,79 @@
-﻿
-@{
-    ViewData["Title"] = "Index";
+﻿@{
+    ViewData["Title"] = "Delete";
     Layout = "~/Areas/Admin/Views/Shared/AdminLayoutPage1.cshtml";
 }
+<link rel="stylesheet" href="/css/Doctor.css?v=1">
 
-<h1>Index</h1>
+            <div class="cardBox">
+                <div class="card">
+                    <div>
+                        <div class="numbers">@ViewBag.Patient</div>
+                        <div class="cardName">Patients</div>
+                    </div>
 
+                    <div class="iconBx">
+                        <ion-icon name="person-outline"></ion-icon>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">@ViewBag.Doctor</div>
+                        <div class="cardName">Doctor</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="person-outline"></ion-icon>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">@ViewBag.Appointment</div>
+                        <div class="cardName">Today's Operations</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="bug-outline"></ion-icon>
+                    </div>
+                </div>
+
+               
+            </div>
+
+            <!-- CHARTS -->
+
+            <div class="charts">
+                <div class="charts-card">
+                    <h2 class="chart-title">Hospital Survey</h2>
+                    <div id="area-chart"></div>
+                </div>
+            </div>
+
+            <div class="charts charts-2">
+                
+
+                <div class="charts-card">
+                    <h2 class="chart-title">New Patients</h2>
+                    <div id="col-chart">
+                    </div>
+                </div>
+
+            </div>
+
+
+       
+        </div>
+    </div>
+    <script type="text/javascript">
+        var jsonData = @Html.Raw(ViewBag.JsonData);  
+        var jsonData2 = @Html.Raw(ViewBag.JsonData2)
+    </script>
+
+    <!-- =========== Scripts =========  -->
+    <script type="module" src="~/js/main1.js?v=4"></script>
+
+    <!-- =============apex chart================= -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.49.1/apexcharts.min.js" integrity="sha512-qiVW4rNFHFQm0jHli5vkdEwP4GPSzCSp85J7JRHdgzuuaTg31tTMC8+AHdEC5cmyMFDByX639todnt6cxEc1lQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

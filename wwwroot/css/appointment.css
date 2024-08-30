@@ -1,0 +1,79 @@
+﻿/* css input-box-booking */
+#Time {
+    margin-left: 62px;
+    border-radius: 10px;
+    height: 40px;
+    border: 1px solid;
+}
+#Date{
+    margin-left:62px;
+}
+.container-booking {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100vh;
+    height: 70vh;
+}
+
+.input-box {
+    border: 1px solid;
+    width: 800px;
+    height: 400px;
+    display: flex;
+}
+
+    .input-box .nav-left {
+        background-color: #c3e4ff;
+        height: 400px;
+        width: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 1px solid;
+    }
+
+    .input-box .box {
+        text-align: center;
+        margin-left: -100px;
+    }
+
+        .input-box .box button {
+            margin-left: 110px;
+        }
+
+        .input-box .box h3 {
+            margin-left: 110px;
+            margin-bottom: 50px;
+            font-weight: 600;
+        }
+
+.nav-left .nav-input {
+    margin: 30px auto;
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+    .nav-left .nav-input input {
+        border-radius: 10px;
+        height: 40px;
+        border: 1px solid;
+        margin-left:19px;
+    }
+
+.input-box .nav-right {
+    background-color: #007add65;
+    height: 400px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .input-box .nav-right p {
+        margin: 0 20px;
+        padding-bottom: 20px;
+    }

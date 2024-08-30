@@ -1,12 +1,141 @@
-﻿@model List<PBL3Hos.Identity.AppUser>
+﻿@model List< PBL3Hos.Models.DbModel.UserDoctor>
 @{
     ViewData["Title"] = "ListDoctor";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<h1>ListDoctor</h1>
+@* <h1>ListDoctor</h1>
+<form class="d-flex flex-row align-items-center flex-wrap" style="margin-top: 20px;" action="/account/listdoctor">
+    @Html.Label("Day", "Day", new { @class = "mx-2 my-1" })
+    <input type="date" id="Day" name="Day" class="form-control w-auto" placeholder="Day">
+
+     @Html.Label("Time", "Time", new { @class = "mx-2 my-1" })
+    <input type="time" id="Time" name="Time" class="form-control w-auto" placeholder="Time">
+    <button type="submit" class="btn btn-primary mx-2">GO</button>
+
+</form>
+
 @foreach (var item in Model)
 {
-    <a href="/account/appointment/@item.Id">@item.UserName</a>
-}
+    <a href="/account/appointment/@item.AccountId">@item.NameDoctor</a>
+} *@
+<link rel="stylesheet" href="~/css/booking.css?v=3" asp-append-version="true" />
 
+<!-- content -->
+<div class="header">
+    <h1>Appointment Booking</h1>
+</div>
+<form class="d-flex flex-row align-items-center flex-wrap" style="margin-top: 20px;" action="/account/listdoctor">
+    <div class="input-form">
+        <div class="calender-layout">
+            <input class="input-calendar" name="Day" type="date" id="selectedDate" readonly>
+            <div class="background-calendar">
+                <div class="wpapper-calendar">
+                    <header>
+                        <p class="current-date"></p>
+                        <div class="icond">
+                            <i id="js-back-month" class="fa-solid fa-chevron-left"></i>
+                            <i id="js-next-month" class="fa-solid fa-chevron-right"></i>
+                        </div>
+                    </header>
+                    <div class="calendar">
+                        <ul class="weeks">
+                            <li>Sun</li>
+                            <li>Mon</li>
+                            <li>Tue</li>
+                            <li>Wed</li>
+                            <li>Thu</li>
+                            <li>Fri</li>
+                            <li>Sat</li>
+                        </ul>
+                        <ul class="days">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="input-layout">
+            <div class="input-box select-time">
+                <div class="select-container">
+                    <label for="Time"></label>
+                    <select name="Time" id="Time">
+                        <option value="">Start Time</option>
+                        <option value="07:00:00">07:00</option>
+                        <option value="07:30:00">07:30</option>
+                        <option value="08:00:00">08:00</option>
+                        <option value="08:30:00">08:30</option>
+                        <option value="09:00:00">09:00</option>
+                        <option value="09:30:00">09:30</option>
+                        <option value="10:00:00">10:00</option>
+                        <option value="10:30:00">10:30</option>
+                        <option value="13:00:00">13:00</option>
+                        <option value="13:30:00">13:30</option>
+                        <option value="14:00:00">14:00</option>
+                        <option value="14:30:00">14:30</option>
+                        <option value="15:00:00">15:00</option>
+                        <option value="15:30:00">15:30</option>
+                        <option value="16:00:00">16:00</option>
+                        <option value="16:30:00">16:30</option>
+                        <option value="19:00:00">19:00</option>
+                        <option value="19:30:00">19:30</option>
+                        <option value="20:00:00">20:00</option>
+                        <option value="20:30:00">20:30</option>
+                        <option value="21:00:00">21:00</option>
+                        <option value="21:30:00">21:30</option>
+                    </select>
+                </div>
+            </div>
+            <div class="specialty select-container">
+                <select name="Specialist" id="specialtyDropdown">
+                    <option value="">Please Select</option>
+                    <option value="Neurology">Neurology</option>
+                    <option value="Cardiology">Cardiology</option>
+                    <option value="Psychology">Psychology</option>
+                    <option value="Dermatology">Dermatology</option>
+                </select>
+            </div>
+            <button class="login-home-button"> CONFIRM </button>
+        </div>
+</form>
+    <div class="contact-layout">
+        <h3>Quick Contacts</h3>
+        <p>Have any questions or need to schedule an appointment? Reach out to us quickly!</p>
+        <ul>
+            <li>Jl. Raya Kuta No.70, Kuta</li>
+            <li>healthcare@gmail.com</li>
+            <li>808 707 6060</li>
+            <li>8 AM - 5 PM , Monday - Saturday</li>
+        </ul>
+    </div>
+</div>
+
+<div class="list-doctor">
+    <div class="wrap-list-doctor">
+        @foreach (var item in Model)
+        {
+            <a href="/account/infoDoctor/@item.AccountId">
+                <div class="doctor">
+                    <div class="img-doctor">
+                        @if (item.ImgFile == null)
+                        {
+                            <img src="https://assets-global.website-files.com/64b0d564635cb0e2d09ac7dd/64df4fd41bbf90309dad5fb9_cta-p-500.png" alt="">
+                        }
+                        else
+                        {
+                            <img src="~/PatientsIMG/@item.ImgFile" alt="">
+
+                        }
+                    </div>
+                    <div class="info-doctor">
+                        <p>@item.Specialist</p>
+                        <h3>@item.Fullname</h3>
+                    </div>
+                </div>
+            </a>
+        }
+       
+    
+    </div>
+   <script src="~/js/booking.js"></script>
+
+ 

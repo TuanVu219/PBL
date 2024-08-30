@@ -15,6 +15,9 @@ namespace PBL3Hos.Models.DbModel
 
             public string NamePatient { get; set; }
             public string Phone { get; set; }
+            public string Fullname { get; set; }
+
+            public string? ImgFile { get; set; }
 
             // Khóa ngoại trỏ đến khóa chính trong một bảng khác (AspNetUsers)
 
@@ -23,7 +26,13 @@ namespace PBL3Hos.Models.DbModel
             public AppUser AppUser { get; set; }
 
             public AppointmentDB Appointment { get; set; }
-        }
-    
+            public ICollection<Rating> Ratings { get; set; }
+        public ICollection<AppointmentCancel> AppointmentCancels { get; set; }
+
+
+
+
+    }
+
 
 }

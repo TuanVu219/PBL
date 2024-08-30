@@ -1,0 +1,67 @@
+﻿.patient-header {
+    position: relative;
+    background: var(--white);
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    font-size: 35px;
+    text-shadow: 2px 2px 8px #4d4d4d98;
+    color: #0056b3;
+    margin: 40px 10px 15px;
+}
+
+.patient-list {
+    position: relative;
+    min-height: 500px;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    margin: 0px 10px 15px;
+}
+
+    .patient-list table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+
+        .patient-list table thead td {
+            font-weight: 600;
+        }
+
+        .patient-list table tr {
+            color: var(--black1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+            .patient-list table tr:last-child {
+                border-bottom: none;
+            }
+
+        .patient-list table tbody tr:hover {
+            background: var(--blue);
+            color: var(--white);
+        }
+
+        .patient-list table tr td {
+            padding: 30px 10px;
+        }
+
+            .patient-list table tr td:last-child {
+                text-align: end;
+            }
+
+            .patient-list table tr td:nth-child(2) {
+                text-align: center;
+            }
+
+            .patient-list table tr td:nth-child(3) {
+                text-align: center;
+            }
+            .patient-list table tr td:nth-child(4) {
+                text-align: center;
+            }

@@ -1,37 +1,172 @@
-﻿@model PBL3Hos.Models.DbModel.AppointmentDB
-@{
-    ViewData["Title"] = "ListAppointment";
-    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
-}
+﻿    @model PBL3Hos.Models.DbModel.AppointmentDB
+    @{
+        ViewData["Title"] = "ListAppointment";
+        Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    }
 
-<h1>ListAppointment</h1>
-@if(@Model==null){
-    <a>Chưa có lịch hẹn nào</a>
-}
-else{
-<table class="table">
-    <tr>
-
-        <th>Doctor UserName</th>
-        <th>
-           Date
-        </th>
-
-    </tr>
-    
+    @* <h1>ListAppointment</h1>
+    @if(@Model==null){
+        <a>Chưa có lịch hẹn nào</a>
+    }
+    else{
+    <table class="table">
         <tr>
-            <td>@Html.DisplayFor(row => row.Doctor.AppUser.UserName)</td>
-            <td>@Model.Date.ToString()</td>
-        <td>
-            <a  href="/account/cancel/@Model.PatientId">Cancel Appointment</a>
-                <a href="/account/editappointment/@Model.PatientId">Edit Appointment</a>
 
-        </td>
+            <th>Doctor Name</th>
+            <th>
+               Date
+            </th>
 
         </tr>
-        </table>
-}
-
     
+            <tr>
+                <td>@Html.DisplayFor(row => row.Doctor.AppUser.UserName)</td>
+                <td>@Model.Date.ToString()</td>
+            <td>
+                <a  href="/account/cancel/@Model.PatientId">Cancel Appointment</a>
+                    <a href="/account/editappointment/@Model.PatientId">Edit Appointment</a>
+
+            </td>
+
+            </tr>
+            </table>
+    } *@
+    <link rel="stylesheet" href="~/css/listAppointment.css">
+    <link rel="stylesheet" href="~/css/notification.css">
+    @if (Model != null && Model.PatientId != null)
+    {
+        <input type="hidden" name="id" value="@Model.PatientId" />
+    }
+
+        <div id="content">
+            <div class="header">
+                <h1>Appointment Booking</h1>
+            </div>
+
+            <div class="container container-doctor-table">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <!-- Grid row -->
+                        <div class="row">
+                            <!-- Grid column -->
+                            <div class="col-md-12 header-list-doctor">
+                                <h4 class=" mb-4">Date Made Appointment</h4>
+                                
+                            </div>
+                            <!-- Grid column -->
+                        </div>
+                        <!-- Grid row -->
+                        <!--Table-->
+                        <div class="table-doctor">
+                            <table class="table table-striped">
+                                <!--Table head-->
+                                <thead>
+                                    <tr>
+                                        <th>Name Doctor</th>
+                                        <th>Speciality</th>
+                                        <th>Phone Number</th>
+                                        <th>Time</th>
+                                    
+                                    </tr>
+                                </thead>
+                                <!--Table head-->
+                                <!--Table body-->
+                                @if(@Model==null){
+                                  <tbody>
+                                    <tr>
+                                    <td>Chưa có lịch hẹn nào</td>
+                                
+                                    </tr>
+                               
+                                </tbody>
+                            }
+                            else{
+                                <tbody>
+                                <tr data-id="@Model.PatientId">
+                                    <td>@Html.DisplayFor(row => row.Doctor.AppUser.UserName)</td>
+                                    <td>@Html.DisplayFor(row => row.Doctor.Specialist)</td>
+                                    <td>@Html.DisplayFor(row => row.Doctor.AppUser.PhoneNumber)</td>
+                                    <td>@Model.Date.ToString()</td>
+                                    <td><button class="button-table js-open-rate" data-id="@Model.PatientId" id="submitAppointment">Delete</button></td>
+                                    <td> <button class="button-table js-open-rate"><a href="/account/editappointment/@Model.PatientId">Edit</a></button></td>
+
+                                    </tr>
+                               
+                                </tbody>
+                                <!--Table body-->
+                                }
+                            </table>
+                        </div>
+                        <!--Table-->
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    <div class="confirm-bgr warning" style="display: none">
+        <div class="box-confirm">
+            <h2>Confirm</h2>
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <p>Are you sure want to permanently delete this appointment?</p>
+            <button id="ButtonCancel" class="cancel-btn">Cancel</button>
+            <button id="ButtonYes" class="yes-btn">Yes</button>
+        </div>
+    </div>
+    <div class="notification-bgr successfull" style="display: none">
+        <div class="notification">
+            <h3>Successfull</h3>
+            <i class="fa-regular fa-circle-check successfull-bgr"></i>
+            <p>
+                You have successfully cancel appointment
+            </p>
+            <button>OK</button>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            $('#submitAppointment').click(function (e) {
+                e.preventDefault();
+                $('.warning').addClass('d-flex'); // Correct the spelling of 'successfull' if necessary
+            var appointmentId = $(this).data('id'); // Lấy ID của lịch hẹn
+                var data = {
+                    id: $('input[name="id"]').val()
+                };
+
+                $('#ButtonYes').click(function (e) { // Corrected selector
+                    e.preventDefault();
+                    $.ajax({
+                        type: "POST",
+                        url: "/account/cancel",
+                        data: data,
+                        success: function (response) {
+                            if (response.success) {
+                                $('.successfull').addClass('d-flex')
+                                $('tr[data-id="' + appointmentId + '"]').remove(); // Xóa hàng
+                            } else {
+                                $('.successfull').removeClass('d-flex').hide();
+                           
+                            }
+                        },
+                        error: function (response) {
+                        
+                        }
+                    });
+                });
+            });
+            $('.notification button').click(function () {
+                $('.successfull').removeClass('d-flex') // Ẩn đi phần thông báo khi nút "OK" được nhấn
+                $('.warning').removeClass('d-flex')
+            });
+            $('#ButtonCancel').click(function () {
+                $('.warning').removeClass('d-flex') // Ẩn đi phần thông báo khi nút "OK" được nhấn
+            });
+
+        });
+    </script>
+    <script src="~/js/notification.js?v=1"></script>
+
+
+  
+  
 
 

@@ -1,74 +1,267 @@
-﻿@model PBL3Hos.Models.DbModel.DoctorAvailability
-@{
+﻿@{
     ViewData["Title"] = "DoctorSchedule";
     Layout = "~/Areas/Doctor/Views/Shared/DoctorLayoutPage1.cshtml";
+
+    // Retrieve the schedule data from ViewBag
+    var schedule = ViewBag.Schedule as Dictionary<string, List<Tuple<string, string, string>>>;
 }
 
-<h1>Doctor Schedule</h1>
-<form action="/doctor/doctor/doctorschedule" method="post">
+<link rel="stylesheet" href="~/css/style.css?v=1">
+<link rel="stylesheet" href="~/css/schedule.css?v=1">
+<form id="schedule-form" action="/doctor/doctor/doctorschedule" method="post">
     @{
-        // Định nghĩa cấu trúc dữ liệu cho các ca làm việc tương ứng với mỗi ngày
         Dictionary<string, List<string>> shiftMap = new Dictionary<string, List<string>>
     {
-    {"Monday", new List<string>{"Day","Afternoon", "Night", "AllDay"}},
-    {"Tuesday", new List<string>{"Day","Afternoon", "Night", "AllDay"}},
-    {"Wednesday", new List<string>{"Day","Afternoon", "Night", "AllDay"}},
-    {"Thursday", new List<string>{"Day","Afternoon", "Night", "AllDay"}},
-    {"Friday", new List<string>{"Day","Afternoon", "Night", "AllDay"}},
-    {"Saturday", new List<string>{"Day","Afternoon", "Night", "AllDay"}},
-    {"Sunday", new List<string>{"Day","Afternoon", "Night", "AllDay"}}
+    {"Monday", new List<string>{"StarttimeDay","EndtimeDay","StarttimeAfternoon","EndtimeAfternoon","StarttimeNight","EndtimeNight"}},
+    {"Tuesday", new List<string>{"StarttimeDay","EndtimeDay","StarttimeAfternoon","EndtimeAfternoon","StarttimeNight","EndtimeNight"}},
+    {"Wednesday", new List<string>{"StarttimeDay","EndtimeDay","StarttimeAfternoon","EndtimeAfternoon","StarttimeNight","EndtimeNight"}},
+    {"Thursday", new List<string>{"StarttimeDay","EndtimeDay","StarttimeAfternoon","EndtimeAfternoon","StarttimeNight","EndtimeNight"}},
+    {"Friday", new List<string>{"StarttimeDay","EndtimeDay","StarttimeAfternoon","EndtimeAfternoon","StarttimeNight","EndtimeNight"}},
+    {"Saturday", new List<string>{"StarttimeDay","EndtimeDay","StarttimeAfternoon","EndtimeAfternoon","StarttimeNight","EndtimeNight"}},
+    {"Sunday", new List<string>{"StarttimeDay","EndtimeDay","StarttimeAfternoon","EndtimeAfternoon","StarttimeNight","EndtimeNight"}}
     };
     }
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Day</th>
-                <th>Shift</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var entry in shiftMap)
-            {
-                <tr>
-                   
-                    <td>
-                        <input type="checkbox" name="AvailableDay[@entry.Key]" value="@entry.Key" />
-                        <label>@entry.Key</label>
-                    </td>
-                    <td>
-                        @foreach (var shift in entry.Value)
-                        {
-                            <input type="radio" name="Shift[@entry.Key]" value="@shift" />
-                            <label>@shift</label>
-                        }
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <div class="schedule">
+        <div class="js-modal-container">
+            <header class="modal-header">
+                Work Schedule
+            </header>
 
-    <button type="submit" class="btn btn-success">Register</button>
+            <div class="modal-body">
+                @foreach (var entry in shiftMap)
+                {
+                    <div class="scheduleForm">
+                        <div class="@entry.Key day" data-day="@entry.Key">
+                            <label>
+                                <input type="checkbox" name="AvailableDay[@entry.Key]" value="@entry.Key" @(schedule != null && schedule.ContainsKey(entry.Key) ? "checked" : "")>
+                                <span>@entry.Key</span>
+                            </label>
+                            <label class="morning shift">
+                                <input type="radio" name="@entry.Key-shift" value="morning" @(schedule != null && schedule.ContainsKey(entry.Key) && schedule[entry.Key].Any(s => s.Item1 == "morning") ? "checked" : "")>
+                                <span>Morning</span>
+                            </label>
+                            <label class="afternoon shift">
+                                <input type="radio" name="@entry.Key-shift" value="afternoon" @(schedule != null && schedule.ContainsKey(entry.Key) && schedule[entry.Key].Any(s => s.Item1 == "afternoon") ? "checked" : "")>
+                                <span>Afternoon</span>
+                            </label>
+                            <label class="evening shift">
+                                <input type="radio" name="@entry.Key-shift" value="evening" @(schedule != null && schedule.ContainsKey(entry.Key) && schedule[entry.Key].Any(s => s.Item1 == "evening") ? "checked" : "")>
+                                <span>Evening</span>
+                            </label>
+
+                            <div class="time">
+                                <div class="@entry.Key-morning-time sh-time" id="timeSelection_@entry.Key">
+                                    <div class="start-time">
+                                        <span>Start time</span>
+                                        <select class="time-select" id="Time_@entry.Key" name="ShiftStartDay[@entry.Key]">
+                                            <option value="">Please Select...</option>
+                                            @for (int i = 7; i <= 11; i++)
+                                            {
+                                                var time = TimeSpan.FromHours(i).ToString(@"hh\:mm");
+                                                <option value="@time" @(schedule != null && schedule.ContainsKey(entry.Key) && schedule[entry.Key].Any(s => s.Item1 == "morning" && s.Item2 == time) ? "selected" : "")>@time</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="finish-time">
+                                        <span>Finish time</span>
+                                        <select class="time-select" id="Time1_@entry.Key" name="ShiftEndDay[@entry.Key]">
+                                            <option value="">Please Select...</option>
+                                            @for (int i = 8; i <= 12; i++)
+                                            {
+                                                var time = TimeSpan.FromHours(i).ToString(@"hh\:mm");
+                                                <option value="@time" @(schedule != null && schedule.ContainsKey(entry.Key) && schedule[entry.Key].Any(s => s.Item1 == "morning" && s.Item3 == time) ? "selected" : "")>@time</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="time">
+                                <div class="@entry.Key-afternoon-time sh-time" id="afternoonTimeSelection_@entry.Key">
+                                    <div class="start-time">
+                                        <span>Start time</span>
+                                        <select class="time-select" id="AfternoonTime_@entry.Key" name="ShiftStartAfternoon[@entry.Key]">
+                                            <option value="">Please Select...</option>
+                                            @for (int i = 13; i <= 17; i++)
+                                            {
+                                                var time = TimeSpan.FromHours(i).ToString(@"hh\:mm");
+                                                <option value="@time" @(schedule != null && schedule.ContainsKey(entry.Key) && schedule[entry.Key].Any(s => s.Item1 == "afternoon" && s.Item2 == time) ? "selected" : "")>@time</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="finish-time">
+                                        <span>Finish time</span>
+                                        <select class="time-select" id="AfternoonTime1_@entry.Key" name="ShiftEndAfternoon[@entry.Key]">
+                                            <option value="">Please Select...</option>
+                                            @for (int i = 14; i <= 18; i++)
+                                            {
+                                                var time = TimeSpan.FromHours(i).ToString(@"hh\:mm");
+                                                <option value="@time" @(schedule != null && schedule.ContainsKey(entry.Key) && schedule[entry.Key].Any(s => s.Item1 == "afternoon" && s.Item3 == time) ? "selected" : "")>@time</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="time">
+                                <div class="@entry.Key-evening-time sh-time" id="nightTimeSelection_@entry.Key">
+                                    <div class="start-time">
+                                        <span>Start time</span>
+                                        <select class="time-select" id="NightTime_@entry.Key" name="ShiftStartNight[@entry.Key]">
+                                            <option value="">Please Select...</option>
+                                            @for (int i = 19; i <= 21; i++)
+                                            {
+                                                var time = TimeSpan.FromHours(i).ToString(@"hh\:mm");
+                                                <option value="@time" @(schedule != null && schedule.ContainsKey(entry.Key) && schedule[entry.Key].Any(s => s.Item1 == "evening" && s.Item2 == time) ? "selected" : "")>@time</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="finish-time">
+                                        <span>Finish time</span>
+                                        <select class="time-select" id="NightTime1_@entry.Key" name="ShiftEndNight[@entry.Key]">
+                                            <option value="">Please Select...</option>
+                                            @for (int i = 20; i <= 23; i++)
+                                            {
+                                                var time = TimeSpan.FromHours(i).ToString(@"hh\:mm");
+                                                <option value="@time" @(schedule != null && schedule.ContainsKey(entry.Key) && schedule[entry.Key].Any(s => s.Item1 == "evening" && s.Item3 == time) ? "selected" : "")>@time</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <p>
+                    Morning: 7h00 - 11h00;
+                    Afternoon: 13h00 - 17h00;
+                    Evening: 19h00 - 22h00
+                </p>
+                <div class="modal-footer">
+                    <button id="dayuncheck">
+                        <i class="fa-solid fa-x"></i>
+                        <p>Clear</p>
+                    </button>
+                    <button id="day-change">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                        <p>Change</p>
+                    </button>
+
+                    <button id="day-confirm" type="submit">
+                        <i class="fa-solid fa-check"></i>
+                        <span>CONFIRM</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="custom-alert">
+            <p id="custom-alert-message"></p>
+        </div>
+    </div>
 </form>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    var availableDays = document.querySelectorAll('input[name^="AvailableDay"]');
-    var shiftRadios = document.querySelectorAll('.shift-radio');
+    document.addEventListener("DOMContentLoaded", function () {
+        // Thêm sự kiện cho tất cả các dropdown thời gian
+        var timeSelects = document.querySelectorAll("[id^=Time]");
+        var afternoonTimeSelects = document.querySelectorAll("[id^=AfternoonTime]");
+        var nightTimeSelects = document.querySelectorAll("[id^=NightTime]");
 
-    availableDays.forEach(function (checkbox) {
-        checkbox.addEventListener('change', function () {
-            var day = this.value;
-            var relatedShiftRadios = document.querySelectorAll('.shift-radio[data-day="' + day + '"]');
-            if (this.checked) {
-                relatedShiftRadios.forEach(function (radio) {
-                    radio.removeAttribute('disabled');
-                });
-            } else {
-                relatedShiftRadios.forEach(function (radio) {
-                    radio.setAttribute('disabled', 'disabled');
-                    radio.checked = false; // Uncheck the radio buttons
-                });
-            }
+        // Lặp qua từng dropdown thời gian
+        timeSelects.forEach(function (timeSelect) {
+            var time1Select = document.getElementById(timeSelect.id.replace("Time", "Time1"));
+
+            timeSelect.addEventListener("change", function () {
+                var selectedTime = timeSelect.value;
+
+                for (var i = 0; i < time1Select.options.length; i++) {
+                    var option = time1Select.options[i];
+                    if (option.value !== "" && option.value <= selectedTime) {
+                        option.disabled = true;
+                    } else {
+                        option.disabled = false;
+                    }
+                }
+            });
         });
+        afternoonTimeSelects.forEach(function (afternoonTimeSelect) {
+            var correspondingAfternoonTime1Select = document.getElementById(afternoonTimeSelect.id.replace("AfternoonTime", "AfternoonTime1"));
+            afternoonTimeSelect.addEventListener("change", function () {
+                var selectedTime = afternoonTimeSelect.value;
+                for (var i = 0; i < correspondingAfternoonTime1Select.options.length; i++) {
+                    var option = correspondingAfternoonTime1Select.options[i];
+                    if (option.value !== "" && option.value <= selectedTime) {
+                        option.disabled = true;
+                    } else {
+                        option.disabled = false;
+                    }
+                }
+            });
+        });
+        nightTimeSelects.forEach(function (nightTimeSelect) {
+            var correspondingNightTime1Select = document.getElementById(nightTimeSelect.id.replace("NightTime", "NightTime1"));
+            nightTimeSelect.addEventListener("change", function () {
+                var selectedTime = nightTimeSelect.value;
+                for (var i = 0; i < correspondingNightTime1Select.options.length; i++) {
+                    var option = correspondingNightTime1Select.options[i];
+                    if (option.value !== "" && option.value <= selectedTime) {
+                        option.disabled = true;
+                    } else {
+                        option.disabled = false;
+                    }
+                }
+            });
+        });
+
+        // Lấy các nút delete và change
+        var deleteButton = document.getElementById("dayuncheck");
+        var changeButton = document.getElementById("day-change");
+
+        // Ngăn chặn hành vi mặc định khi nhấp vào nút delete
+        deleteButton.addEventListener("click", function (event) {
+            event.preventDefault(); // Ngăn chặn hành động mặc định của nút
+            // Thêm mã xử lý tùy chỉnh ở đây nếu cần thiết
+        });
+
+        // Ngăn chặn hành vi mặc định khi nhấp vào nút change
+        changeButton.addEventListener("click", function (event) {
+            event.preventDefault(); // Ngăn chặn hành động mặc định của nút
+            // Thêm mã xử lý tùy chỉnh ở đây nếu cần thiết
+        });
+
+        deleteButton.addEventListener("click", function (event) {
+            $.ajax({
+                url: '/doctor/doctor/Delete', // Điều chỉnh URL endpoint xóa lịch trình theo cấu trúc của bạn
+                type: 'POST',
+                dataType: 'json',
+                data: $('form').serialize(), // Gửi dữ liệu của biểu mẫu (nếu cần)
+                success: function (response) {
+                    if (response.success) {
+                        // Xóa lịch trình thành công, đặt lại các dropdown về giá trị mặc định
+                        var allSelects = document.querySelectorAll("select.time-select");
+                        allSelects.forEach(function (select) {
+                            select.value = "";
+                            var event = new Event("change");
+                            select.dispatchEvent(event);
+                        });
+                    } else {
+                        // Xóa lịch trình thất bại, xử lý theo cách phù hợp với ứng dụng của bạn
+                        alert('Failed to delete schedule.');
+                    }
+                },
+                error: function () {
+                    // Xử lý lỗi kết nối hoặc lỗi server
+                    alert('An error occurred while processing your request.');
+                }
+            });
+        });
+
+       
     });
 </script>
+<script src="~/js/main1.js?v=1"></script>
+<script src="~/js/schedule.js?v=4"></script>

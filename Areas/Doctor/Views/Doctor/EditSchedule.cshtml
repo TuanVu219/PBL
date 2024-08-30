@@ -1,91 +1,239 @@
 ﻿@{
     ViewData["Title"] = "DoctorSchedule";
     Layout = "~/Areas/Doctor/Views/Shared/DoctorLayoutPage1.cshtml";
+    var schedule = ViewBag.Schedule as Dictionary<string, List<Tuple<string, string, string>>>;
 }
-
-<h1>Doctor Schedule</h1>
+<link rel="stylesheet" href="~/css/style.css?v=1">
+<link rel="stylesheet" href="~/css/schedule.css?v=1">
 <form action="/doctor/doctor/editschedule" method="post">
     @{
-        // Định nghĩa cấu trúc dữ liệu cho các ca làm việc tương ứng với mỗi ngày
         Dictionary<string, List<string>> shiftMap = new Dictionary<string, List<string>>
     {
-    {"Monday", new List<string>{"Day","Afternoon", "Night", "AllDay"}},
-    {"Tuesday", new List<string>{"Day","Afternoon", "Night", "AllDay"}},
-    {"Wednesday", new List<string>{"Day","Afternoon", "Night", "AllDay"}},
-    {"Thursday", new List<string>{"Day","Afternoon", "Night", "AllDay"}},
-    {"Friday", new List<string>{"Day","Afternoon", "Night", "AllDay"}},
-    {"Saturday", new List<string>{"Day","Afternoon", "Night", "AllDay"}},
-    {"Sunday", new List<string>{"Day","Afternoon", "Night", "AllDay"}}
+    {"Monday", new List<string>{"StarttimeDay","EndtimeDay","StarttimeAfternoon","EndtimeAfternoon","StarttimeNight","EndtimeNight"}},
+    {"Tuesday", new List<string>{"StarttimeDay","EndtimeDay","StarttimeAfternoon","EndtimeAfternoon","StarttimeNight","EndtimeNight"}},
+    {"Wednesday", new List<string>{"StarttimeDay","EndtimeDay","StarttimeAfternoon","EndtimeAfternoon","StarttimeNight","EndtimeNight"}},
+    {"Thursday", new List<string>{"StarttimeDay","EndtimeDay","StarttimeAfternoon","EndtimeAfternoon","StarttimeNight","EndtimeNight"}},
+    {"Friday", new List<string>{"StarttimeDay","EndtimeDay","StarttimeAfternoon","EndtimeAfternoon","StarttimeNight","EndtimeNight"}},
+    {"Saturday", new List<string>{"StarttimeDay","EndtimeDay","StarttimeAfternoon","EndtimeAfternoon","StarttimeNight","EndtimeNight"}},
+    {"Sunday", new List<string>{"StarttimeDay","EndtimeDay","StarttimeAfternoon","EndtimeAfternoon","StarttimeNight","EndtimeNight"}}
     };
     }
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Day</th>
-                <th>Shift</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var entry in shiftMap)
-            {
-                <tr>
-                   
-                        @if(ViewBag.Schedule.ContainsKey(entry.Key)){
-                    <td>
-                        <input type="checkbox" name="AvailableDay[@entry.Key]" value="@entry.Key" checked/>
-                        <label>@entry.Key</label>
-                        </td>
-                    }
-                    else
-                    {
-                        <td>
-                            <input type="checkbox" name="AvailableDay[@entry.Key]" value="@entry.Key" />
-                            <label>@entry.Key</label>
-                        </td>
-                    }
+    <div class="schedule">
+        <div class="js-modal-container">
+            <header class="modal-header">
+                Edit Schedule
+            </header>
 
-                    <td>
-                        @foreach (var shift in entry.Value)
-                        {
-                            if(shift==ViewBag.Schedule[entry.Key]){
-                            <input type="radio" name="Shift[@entry.Key]" value="@shift" checked />
-                                <label>@shift</label>
-                            }
-                            else
-                            {
-                                <input type="radio" name="Shift[@entry.Key]" value="@shift" />
-                                <label>@shift</label>
-                                
-                            }
-                        }
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+            <div class="modal-body">
+                @foreach (var entry in shiftMap)
+                {
+                    var day = entry.Key;
+                    var daySchedules = schedule != null && schedule.ContainsKey(day) ? schedule[day] : new List<Tuple<string, string, string>>();
 
-    <button type="submit" class="btn btn-success">Register</button>
+                    <div class="scheduleForm">
+                        <div class="@day day" data-day="@day">
+                            <label>
+                                <input type="checkbox" name="AvailableDay[@day]" value="@day">
+                                <span>@day</span>
+                            </label>
+                            <label class="morning shift">
+                                <input type="radio" name="@day-shift" value="morning">
+                                <span>Morning</span>
+                            </label>
+                            <label class="afternoon shift">
+                                <input type="radio" name="@day-shift" value="afternoon">
+                                <span>Afternoon</span>
+                            </label>
+                            <label class="evening shift">
+                                <input type="radio" name="@day-shift" value="evening">
+                                <span>Evening</span>
+                            </label>
+
+                            <div class="time">
+                                <div class="@day-morning-time sh-time" id="timeSelection_@day">
+                                    <div class="start-time">
+                                        <span>Start time</span>
+                                        <select class="time-select" id="Time_@day" name="ShiftStartDay[@day]">
+                                            <option value="">Please Select...</option>
+                                            @foreach (var time in new List<string> { "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00" })
+                                            {
+                                                var selected = daySchedules.Any(s => s.Item1 == "morning" && s.Item2 == time) ? "selected" : "";
+                                                <option value="@time" @selected>@time</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="finish-time">
+                                        <span>Finish time</span>
+                                        <select class="time-select" id="Time1_@day" name="ShiftEndDay[@day]">
+                                            <option value="">Please Select...</option>
+                                            @foreach (var time in new List<string> { "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00" })
+                                            {
+                                                var selected = daySchedules.Any(s => s.Item1 == "morning" && s.Item3 == time) ? "selected" : "";
+                                                <option value="@time" @selected>@time</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="time">
+                                <div class="@day-afternoon-time sh-time" id="afternoonTimeSelection_@day">
+                                    <div class="start-time">
+                                        <span>Start time</span>
+                                        <select class="time-select" id="AfternoonTime_@day" name="ShiftStartAfternoon[@day]">
+                                            <option value="">Please Select...</option>
+                                            @foreach (var time in new List<string> { "13:00", "13:30", "14:00", "14:30", "15:00", "15:30" })
+                                            {
+                                                var selected = daySchedules.Any(s => s.Item1 == "afternoon" && s.Item2 == time) ? "selected" : "";
+                                                <option value="@time" @selected>@time</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="finish-time">
+                                        <span>Finish time</span>
+                                        <select class="time-select" id="AfternoonTime1_@day" name="ShiftEndAfternoon[@day]">
+                                            <option value="">Please Select...</option>
+                                            @foreach (var time in new List<string> { "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00" })
+                                            {
+                                                var selected = daySchedules.Any(s => s.Item1 == "afternoon" && s.Item3 == time) ? "selected" : "";
+                                                <option value="@time" @selected>@time</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="time">
+                                <div class="@day-evening-time sh-time" id="nightTimeSelection_@day">
+                                    <div class="start-time">
+                                        <span>Start time</span>
+                                        <select class="time-select" id="NightTime_@day" name="ShiftStartNight[@day]">
+                                            <option value="">Please Select...</option>
+                                            @foreach (var time in new List<string> { "19:00", "19:30", "20:00", "20:30" })
+                                            {
+                                                var selected = daySchedules.Any(s => s.Item1 == "evening" && s.Item2 == time) ? "selected" : "";
+                                                <option value="@time" @selected>@time</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="finish-time">
+                                        <span>Finish time</span>
+                                        <select class="time-select" id="NightTime1_@day" name="ShiftEndNight[@day]">
+                                            <option value="">Please Select...</option>
+                                            @foreach (var time in new List<string> { "20:00", "20:30", "21:00", "21:30", "22:00" })
+                                            {
+                                                var selected = daySchedules.Any(s => s.Item1 == "evening" && s.Item3 == time) ? "selected" : "";
+                                                <option value="@time" @selected>@time</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <p>
+                    Morning: 7h00 - 11h00;
+                    Afternoon: 13h00 - 17h00;
+                    Evening: 19h00 - 22h00
+                </p>
+                <div class="modal-footer">
+                    <button id="day-uncheck">
+                        <i class="fa-solid fa-x"></i>
+                        <p>Clear</p>
+                    </button>
+                    <button id="day-change">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                        <p>Change</p>
+                    </button>
+
+                    <button id="day-confirm" type="submit">
+                        <i class="fa-solid fa-check"></i>
+                        <span>CONFIRM</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="custom-alert">
+            <p id="custom-alert-message"></p>
+        </div>
+    </div>
 </form>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    var availableDays = document.querySelectorAll('input[name^="AvailableDay"]');
-    var shiftRadios = document.querySelectorAll('.shift-radio');
+    document.addEventListener("DOMContentLoaded", function () {
+        var timeSelects = document.querySelectorAll("[id^=Time]");
+        var afternoonTimeSelects = document.querySelectorAll("[id^=AfternoonTime]");
+        var nightTimeSelects = document.querySelectorAll("[id^=NightTime]");
 
-    availableDays.forEach(function (checkbox) {
-        checkbox.addEventListener('change', function () {
-            var day = this.value;
-            var relatedShiftRadios = document.querySelectorAll('.shift-radio[data-day="' + day + '"]');
-            if (this.checked) {
-                relatedShiftRadios.forEach(function (radio) {
-                    radio.removeAttribute('disabled');
-                });
-            } else {
-                relatedShiftRadios.forEach(function (radio) {
-                    radio.setAttribute('disabled', 'disabled');
-                    radio.checked = false; // Uncheck the radio buttons
-                });
-            }
+        timeSelects.forEach(function (timeSelect) {
+            var time1Select = document.getElementById(timeSelect.id.replace("Time", "Time1"));
+
+            timeSelect.addEventListener("change", function () {
+                var selectedTime = timeSelect.value;
+                for (var i = 0; i < time1Select.options.length; i++) {
+                    var option = time1Select.options[i];
+                    option.disabled = option.value !== "" && option.value <= selectedTime;
+                }
+            });
+        });
+        afternoonTimeSelects.forEach(function (afternoonTimeSelect) {
+            var correspondingAfternoonTime1Select = document.getElementById(afternoonTimeSelect.id.replace("AfternoonTime", "AfternoonTime1"));
+            afternoonTimeSelect.addEventListener("change", function () {
+                var selectedTime = afternoonTimeSelect.value;
+                for (var i = 0; i < correspondingAfternoonTime1Select.options.length; i++) {
+                    var option = correspondingAfternoonTime1Select.options[i];
+                    option.disabled = option.value !== "" && option.value <= selectedTime;
+                }
+            });
+        });
+        nightTimeSelects.forEach(function (nightTimeSelect) {
+            var correspondingNightTime1Select = document.getElementById(nightTimeSelect.id.replace("NightTime", "NightTime1"));
+            nightTimeSelect.addEventListener("change", function () {
+                var selectedTime = nightTimeSelect.value;
+                for (var i = 0; i < correspondingNightTime1Select.options.length; i++) {
+                    var option = correspondingNightTime1Select.options[i];
+                    option.disabled = option.value !== "" && option.value <= selectedTime;
+                }
+            });
+        });
+
+        var deleteButton = document.getElementById("day-uncheck");
+        var changeButton = document.getElementById("day-change");
+
+        deleteButton.addEventListener("click", function (event) {
+            event.preventDefault();
+            $.ajax({
+                url: '/doctor/doctor/Delete',
+                type: 'POST',
+                dataType: 'json',
+                data: $('form').serialize(),
+                success: function (response) {
+                    if (response.success) {
+                        var allSelects = document.querySelectorAll("select.time-select");
+                        allSelects.forEach(function (select) {
+                            select.value = "";
+                            var event = new Event("change");
+                            select.dispatchEvent(event);
+                        });
+                    } else {
+                        alert('Failed to delete schedule.');
+                    }
+                },
+                error: function () {
+                    alert('An error occurred while processing your request.');
+                }
+            });
+        });
+
+        changeButton.addEventListener("click", function (event) {
+            event.preventDefault();
         });
     });
 </script>
+<script src="~/js/main1.js?v=1"></script>
+<script src="~/js/schedule.js?v=6"></script>
+

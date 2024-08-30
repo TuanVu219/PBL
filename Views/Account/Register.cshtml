@@ -14,6 +14,14 @@
             @Html.TextBoxFor(temp => temp.Username, new { placeholder = "UserName", @class = "form-control" })
             @Html.ValidationMessageFor(temp => temp.Username)
         </div>
+
+        <div class="col-md-6">
+            @Html.LabelFor(temp => temp.Fullname)
+            @Html.TextBoxFor(temp => temp.Fullname, new { placeholder = "Fullname", @class = "form-control" })
+            @Html.ValidationMessageFor(temp => temp.Fullname)
+        </div>
+
+
         <div class="col-md-6">
             @Html.LabelFor(temp => temp.Email)
             @Html.TextBoxFor(temp => temp.Email, new { placeholder = "Email", @class = "form-control" })

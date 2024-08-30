@@ -1,11 +1,11 @@
 ﻿@using PBL3Hos.ViewModel
-@model LoginVM
+@model RegisterVM
 @{
     ViewData["Title"] = "Login";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<h1>Login</h1>
+@* <h1>Login</h1>
 @using (Html.BeginForm("Login", "Account", FormMethod.Post))
 {
     <div class="row w-25 mx-auto">
@@ -36,7 +36,139 @@
         </div>
 
     </div>
-}
+} *@
+<link rel="stylesheet" href="~/css/loginPage.css?v=1">
+    <div class="background-log div-log">
+        <div class="faint">
+            <div class="frame-log">
+                <div class="nav-left">
+                    <ul>
+                        <li><h2 class="name-web">Harrmony Health Clinic</h2></li>
+                        <li>
+                            <h1>Chào mừng</h1>
+                            <h2 class="welcome-web">Đến với hệ thống đặt lịch khám Harmony Health Clinic</h2>
+                        </li>
+                        <li><a>Các bạn đang có nhu cầu khám chữa bệnh hãy đăng nhập hoặc đăng kí tài khoản để sử dụng các dịch vụ khám chữa bệnh ngay hôm nay.</a></li>
+                        <li class="icon-log-left">
+                            <i class="fa-brands fa-linkedin"></i>
+                            <i class="fa-brands fa-instagram"></i>
+                            <i class="fa-solid fa-phone"></i>
+                            <i class="fa-brands fa-facebook"></i>
+                            <i class="fa-brands fa-twitter"></i>
+
+                        </li>
+                    </ul>
+                </div>
+                <div class="backgroundAnimation"></div>
+                <div class="nav-right">
+                    <a href="/homePage.html" class="close-log"><i class="fa-solid fa-xmark"></i></a>
+                    <div class="ok">
+                        <div class="ok1">
+                            <div class="frame-nav-right">
+                                <form action="/account/login" method="post">
+                                    <h2>Đăng nhập</h2>
+                                    <div class="input-box">
+                                        <span class="icon"><i class="fa-solid fa-user"></i></span>
+
+                                        <input type="text" name="UserName" id="UserName" required>
+                                    <label for="UserName">UserName</label>
+                                        
+                                    </div>
+                                    <div class="input-box">
+                                        <span class="icon"><i class="fa-solid fa-lock"></i></span>
+                                   
+                                    <input type="password" name="Password" id="Password" required>
+                                    <label for="Password">Password</label>
+                                    </div>
+                                <p class="text-danger">@ViewBag.Eror</p>
+                                    <div class="remember-fogot">
+
+                                    <label> <input asp-for="RememberMe" class="form-check-input" /></label>
+                                        <a href="#">Quên mật khẩu?</a>
+                                    </div>
+                               
+                                    <button type="submit" class="btn">Đăng nhập</button>
+                                    <div class="login-register">
+                                        <p>Bạn không có tài khoản? <a href="#" class="register-link">Đăng kí</a></p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    <div class="ok2">
+                    <div class="frame-nav-right frame-nav-right2 ">
+                        <form action="/account/register" method="post" class="size-form">
+                            <h2 class="h2Signin">Đăng kí</h2>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="input-box">
+                                        <span class="icon"><i class="fa-solid fa-user"></i></span>
+                                        <input name="UserName" id="UserName" type="text" required>
+                                        <label>UserName</label>
+                                    </div>
+
+                                      <div class="input-box">
+                                         <span class="icon"><i class="fa-solid fa-user"></i></span>
+                                        <input name="Fullname" id="Fullname" type="text" required>
+                                        <label>Fullname</label>
+                                    </div>
+                                   
+                                    <div class="input-box">
+                                        <span class="icon"><i class="fa-solid fa-lock"></i></span>
+                                        <input type="password" name="Password" id="Password" required>
+                                        <label>Password</label>
+                                    </div>
+                                     <div class="input-box">
+                                        <span class="icon"><i class="fa-solid fa-lock"></i></span>
+                                        <input type="password" name="ConfirmPassword" id="ConfirmPassword" required>
+                                        <label>Confirm Password</label>
+                                    </div>
+                                   
+                                    <div class="remember-fogot">
+                                        <label><input type="checkbox"> Tôi đồng ý với điều khoản sử dụng </label>
+                                        <button type="submit" class="btn btn-signin">Đăng kí</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 ml-4" >
+                                     <div class="input-box">
+                                        <span class="icon"><i class="fa-solid fa-envelope"></i></span>
+                                        <input type="email" name="Email" id="Email" required>
+                                        <label>Email</label>
+                                    </div>
+                                    <div class="input-box">
+                                        <span class="icon"><i class="fa-solid fa-phone"></i></span>
+                                        <input type="text" name="Mobile" id="Mobile" required>
+                                        <label>Mobile</label>
+                                    </div>
+                                    <div class="input-box">
+                                        <span class="icon pt"><i class="fa-solid fa-calendar-days"></i></span>
+                                       
+                                           <input type="date" name="DateofBirth" required> 
+                                    
+                                         
+                                        <label>Date of Birth</label>
+                                    </div>
+                                  
+                                    <div class="input-box">
+                                        <span class="icon"><i class="fa-solid fa-map-location-dot"></i></span>
+                                        <input type="text" name="Address" id="Address" required>
+                                        <label>Address</label>
+                                    </div> 
+                                    <div class="login-register login-register2 ">
+                                        <p>Bạn đã có tài khoản? <a href="#" class="login-link">Đăng nhập</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- loader -->
+  
+<script src="/js/loginPage.js"></script>
 
 
 

@@ -1,0 +1,111 @@
+﻿/* css notification */
+.js-container-notification {
+    display: none;
+    position: absolute;
+    top: 75px;
+    transform: translateX(-117px);
+}
+
+.notification-container {
+    width: 400px;
+    min-height: 200px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 3px 3px #00000033;
+}
+.notification-bell {
+    position: relative;
+    display: inline-block;
+}
+
+.notification-count {
+    position: absolute;
+    top: -9px; /* Điều chỉnh vị trí top để đặt nó lên trên */
+    right: -11px; /* Điều chỉnh vị trí right để đặt nó bên phải */
+    background-color: red; /* Màu nền của số đếm */
+    color: white; /* Màu chữ của số đếm */
+    border-radius: 50%; /* Bo tròn cho hình tròn */
+    font-size: 16px; /* Cỡ chữ của số đếm */
+    height: 68%;
+    width: 95%;
+    text-align: center;
+}
+
+.notification-line {
+    width: 100%;
+    min-height: 50px;
+}
+
+.notification-line2 {
+    width: 100%;
+    min-height: 50px;
+    background-color: #ccc;
+}
+
+
+
+.notification-line .doctor-notification {
+    display: flex;
+    align-items: center;
+}
+
+.notification-line2 .doctor-notification {
+    display: flex;
+    align-items: center;
+}
+
+    .notification-line img {
+        margin: 5px 5px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+    }
+
+.notification-line2 img {
+    margin: 5px 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.doctor-notification h4 {
+    font-size: 20px;
+    margin-top: 2px;
+}
+
+.notification-line p {
+    font-size: 17px;
+    margin-left: 35px;
+}
+
+.notification-line2 p {
+    font-size: 17px;
+    margin-left: 35px;
+}
+
+.notification-line .line {
+    width: 100%;
+    height: 1px;
+    background-color: #00000062;
+}
+
+.notification-line2 .line {
+    width: 100%;
+    height: 1px;
+    background-color: #00000062;
+}
+
+.js-container-notification.open {
+    display: flex;
+}
+
+.js-close-notification {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 20px;
+}
+
+.js-open-notification.open {
+    opacity: 0.5;
+}

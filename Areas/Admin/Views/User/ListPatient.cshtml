@@ -1,0 +1,40 @@
+﻿@model List<PBL3Hos.Models.DbModel.UserPatient>
+@{
+    ViewData["Title"] = "ListPatient";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayoutPage1.cshtml";
+}
+
+<link rel="stylesheet" href="/css/Doctor.css?v=1">
+
+<div class="patient">
+    <header class="patient-header">
+        Patient's List
+    </header>
+    <div class="patient-list">
+        <table>
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Date of Birth</td>
+                    <td>Phone Number</td>
+                    <td>Address</td>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach(var item in Model)
+                {
+                <tr>
+                    <td>@item.Fullname</td>
+                    <td>@item.AppUser.Birthday</td>
+                    <td>@item.AppUser.PhoneNumber</td>
+                    <td>@item.AppUser.Address</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+        </div>
+<script src="~/js/main1.js?v=1"></script>
+

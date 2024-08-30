@@ -34,8 +34,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/PBL3Hos/PBL3Hos/Areas/Admin/Views/User/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/PBL3Hos/PBL3Hos/Areas/Admin/Views/User/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PBL3Hos/PBL3Hos/Areas/Admin/Views/User/ListDoctor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxMaXN0RG9jdG9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PBL3Hos/PBL3Hos/Areas/Admin/Views/User/ListPatient.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxMaXN0UGF0aWVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/PBL3Hos/PBL3Hos/Areas/Admin/Views/User/ListUser.cshtml]
@@ -44,6 +56,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/PBL3Hos/PBL3Hos/Areas/Admin/Views/User/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PBL3Hos/PBL3Hos/Areas/Doctor/Views/Doctor/Cancel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRG9jdG9yXFZpZXdzXERvY3RvclxDYW5jZWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/PBL3Hos/PBL3Hos/Areas/Doctor/Views/Doctor/DoctorSchedule.cshtml]
@@ -66,8 +82,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRG9jdG9yXFZpZXdzXERvY3RvclxTY2hlZHVsZU9mZi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/PBL3Hos/PBL3Hos/Areas/Doctor/Views/Doctor/ShowInfoDoctor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRG9jdG9yXFZpZXdzXERvY3RvclxTaG93SW5mb0RvY3Rvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/PBL3Hos/PBL3Hos/Areas/Doctor/Views/Doctor/ShowSchedule.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRG9jdG9yXFZpZXdzXERvY3RvclxTaG93U2NoZWR1bGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PBL3Hos/PBL3Hos/Areas/Doctor/Views/Doctor/Statistics.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRG9jdG9yXFZpZXdzXERvY3RvclxTdGF0aXN0aWNzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/PBL3Hos/PBL3Hos/Areas/Doctor/Views/Shared/DoctorLayoutPage1.cshtml]
@@ -78,6 +102,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBcHBvaW50bWVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/PBL3Hos/PBL3Hos/Views/Account/AppointmentHistory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBcHBvaW50bWVudEhpc3RvcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/PBL3Hos/PBL3Hos/Views/Account/Cancel.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDYW5jZWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -86,12 +114,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxFZGl0QXBwb2ludG1lbnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/PBL3Hos/PBL3Hos/Views/Account/EditProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxFZGl0UHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PBL3Hos/PBL3Hos/Views/Account/InfoDoctor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxJbmZvRG9jdG9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/PBL3Hos/PBL3Hos/Views/Account/ListAppointment.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMaXN0QXBwb2ludG1lbnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/PBL3Hos/PBL3Hos/Views/Account/ListDoctor.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMaXN0RG9jdG9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PBL3Hos/PBL3Hos/Views/Account/ListDoctor1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMaXN0RG9jdG9yMS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/PBL3Hos/PBL3Hos/Views/Account/Login.cshtml]

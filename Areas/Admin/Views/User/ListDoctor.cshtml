@@ -1,0 +1,162 @@
+﻿@model List<PBL3Hos.Models.DbModel.UserDoctor>
+@{
+    ViewData["Title"] = "ListDoctor";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayoutPage1.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+
+    <link rel="stylesheet" href="~/css/doctorlist.css">
+  
+
+            <div class="doctor">
+                <header class="doctor-header">
+                    Doctor List
+                    <button class="add-btn">
+                        <i class="fa-solid fa-plus"></i>
+                        Add New Doctor
+                    </button>
+                </header>
+                <div class="doctor-list">
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Fullname</td>
+                                <td>Email</td>
+                                 <td>Specialist</td>
+                                <td>Phone Number</td>
+                                <td>City</td>
+                                <td></td>
+                              
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Fullname</td>
+                        <td>@item.AppUser.Email</td>
+                        <td>@item.Specialist</td>
+                        <td>@item.Phone</td>
+                        <td>@item.AppUser.City</td>
+                        <td>
+                            <a href="/admin/user/edit/@item.AppUser.Id">
+                            <button class="edit-btn">
+                                Edit
+                                <i class="fa-solid fa-pen"></i>
+                            </button>
+                            </a>
+                        </td>
+
+                        
+                    </tr>
+                }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="add-modal modal">
+            <div class="modal-container">
+                <header class="modal-header">
+                    <span>Add New Doctor</span>
+                </header>
+        <form action="/admin/user/register" method="post">
+
+                <div class="modal-body">
+                    <div class="info">
+                        <div class="form__group field">
+                            <input name="Username" type="text" class="form__field" id="username" placeholder="Username" required="">
+                            <label for="Username" class="form__label">User Name</label>
+                        </div>
+                        <div class="form__group field">
+                            <input name="Fullname" type="input" class="form__field" placeholder="Name" required="">
+                            <label for="name" class="form__label">Full Name</label>
+                        </div>
+                        <div class="form__group field">
+                            <input name="Password" type="password" class="form__field" placeholder="Password" required="">
+                            <label for="Password" class="form__label">Password</label>
+                        </div>
+                        <div class="form__group field">
+                        <input name="ConfirmPassword" type="password" class="form__field" placeholder="password" required="">
+                            <label for="password" class="form__label">Confirm Password</label>
+                        </div>
+                        <div class="form__group field">
+                            <input name="Email" type="input" class="form__field" placeholder="Email" required="">
+                            <label for="Email" class="form__label">Email</label>
+                        </div>
+                        <div class="form__group field">
+                        <input name="Mobile" type="number" class="form__field" placeholder="phone" required="">
+                            <label for="phone" class="form__label">Phone Number</label>
+                        </div>
+                        <div class="form__group field">
+                        <input name="DateofBirth" type="date" class="form__field" placeholder="birthday" id="dateInput" required="">
+                            <label for="birthday" class="form__label">Date of Birth</label>
+                        </div>
+                        <div class="form__group field">
+                        <input name="Address" type="input" class="form__field" placeholder="address" required="">
+                            <label for="address" class="form__label">Address</label>
+                        </div>
+                        <div class="form__group field">
+                        <input name="City" type="input" class="form__field" placeholder="city" required="">
+                            <label for="city" class="form__label">City</label>
+                        </div>
+                        <div class="form__group field">
+                            <textarea name="Career" class="form__field" placeholder="career" required=""></textarea>
+                            <label for="career" class="form__label">Career</label>
+                        </div>
+                        <div class="form__group field">
+                            <select name="Specialist" id="specialist" class="form__field" required="">
+                                <option value="" disabled selected>Please Select</option>
+                                <option value="Cardiology">Cardiology</option>
+                                <option value="Neurology">Neurology</option>
+                                <option value="Psychology">Psychology</option>
+                                <option value="Dermatology">Dermatology</option>
+                            </select>
+                            <label for="specialist" class="form__label">Specialist</label>
+                        </div>
+                        <div class="form__group field">
+                            <input name="qualification" type="input" class="form__field" placeholder="qualification" required="">
+                            <label for="qualification" class="form__label">Qualification</label>
+                        </div>
+                        <div class="form__group field">
+                        <input name="yearofexperience" type="input" class="form__field" placeholder="yearofexperience" required="">
+                            <label for="yearofexperience" class="form__label">Year Of Experience</label>
+                        </div>
+                        <div class="form__group field">
+                        <textarea name="studyprocess" class="form__field" placeholder="achievement" required=""></textarea>
+                            <label for="achievement" class="form__label">Study Achievement</label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <footer class="modal-footer">
+                            <button class="close-modal">Close</button>
+                            <button type="submit" class="add-confirm-btn">ADD</button>
+                        </footer>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+
+
+
+       
+
+    </div>
+
+
+    <!-- =========== Scripts =========  -->
+    <script src="~/js/Doctor.js"> </script>
+<script src="~/js/main1.js?v=1"></script>
+
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+

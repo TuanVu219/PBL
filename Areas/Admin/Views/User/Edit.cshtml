@@ -1,0 +1,161 @@
+﻿@model PBL3Hos.Models.DbModel.UserDoctor
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayoutPage1.cshtml";
+}
+<div class="edit-modal modal">
+    <div class="modal-container">
+        <header class="modal-header">
+            <span>Edit Doctor's Information</span>
+        </header>
+        <link rel="stylesheet" href="~/css/edit.css?v=1">
+
+        <form action="/admin/user/edit" method="post">
+
+            <div class="modal-body">
+                <div class="info">
+
+                    <input type="hidden" name="Id" value="@Model.AccountId" />
+                    <input type="hidden" name="DoctorId" value="@Model.id" />
+                    <div class="form__group field">
+                        <input name="Username" type="text" class="form__field" id="username" value="@Model.AppUser.UserName" required="">
+                        <label for="Username" class="form__label">User Name</label>
+                    </div>
+                    <div class="form__group field">
+                        <input name="Fullname" type="input" class="form__field" value="@Model.Fullname"  required="">
+                        <label for="name" class="form__label">Full Name</label>
+                    </div>
+                 
+                    <div class="form__group field">
+                        <input name="Email" type="input" class="form__field" value="@Model.AppUser.Email" required="">
+                        <label for="Email" class="form__label">Email</label>
+                    </div>
+                    <div class="form__group field">
+                        <input name="PhoneNumber" type="number" class="form__field" value="@Model.Phone" required="">
+                        <label for="phone" class="form__label">Phone Number</label>
+                    </div>
+                    <div class="form__group field">
+                        <input name="Birthday" type="date" class="form__field" value="@ViewBag.Birthday" id="dateInput" required="">
+                        <label for="birthday" class="form__label">Date of Birth</label>
+                    </div>
+                    <div class="form__group field">
+                        <input name="Address" type="input" class="form__field" value="@Model.AppUser.Address" required="">
+                        <label for="address" class="form__label">Address</label>
+                    </div>
+                    <div class="form__group field">
+                        <input name="City" type="input" class="form__field" value="@Model.AppUser.City" required="">
+                        <label for="city" class="form__label">City</label>
+                    </div>
+                    <div class="form__group field">
+                        <textarea id="career" name="Career" class="form__field" required="">@Model.Career</textarea>
+                        <label for="career" class="form__label">Career</label>
+                    </div>
+                    <div class="form__group field">
+
+                        @if (Model.Specialist == "Cardiology")
+                        {
+                            <select name="Specialist" id="specialist" class="form__field" required="">
+                                <option value="" disabled selected>Please Select</option>
+                                <option value="Cardiology" selected>Cardiology</option>
+                                <option value="Neurology">Neurology</option>
+                                <option value="Psychology">Psychology</option>
+                                <option value="Dermatology">Dermatology</option>
+
+                            </select>
+                        }
+
+                        @if (Model.Specialist == "Neurology")
+                        {
+                            <select name="Specialist" id="specialist" class="form__field" required="">
+                                <option value="" disabled selected>Please Select</option>
+                                <option value="Cardiology">Cardiology</option>
+                                <option value="Neurology" selected>Neurology</option>
+                                <option value="Psychology">Psychology</option>
+                                <option value="Dermatology">Dermatology</option>
+
+                            </select>
+                        }
+
+                        @if (Model.Specialist == "Psychology")
+                        {
+                            <select name="Specialist" id="specialist" class="form__field" required="">
+                                <option value="" disabled selected>Please Select</option>
+                                <option value="Cardiology">Cardiology</option>
+                                <option value="Neurology">Neurology</option>
+                                <option value="Psychology" selected>Psychology</option>
+                                <option value="Dermatology">Dermatology</option>
+
+                            </select>
+                        }
+
+                        @if (Model.Specialist == "Dermatology")
+                        {
+                            <select name="Specialist" id="specialist" class="form__field" required="">
+                                <option value="" disabled selected>Please Select</option>
+                                <option value="Cardiology">Cardiology</option>
+                                <option value="Neurology">Neurology</option>
+                                <option value="Psychology">Psychology</option>
+                                <option value="Dermatology" selected>Dermatology</option>
+
+                            </select>
+                        }
+                        <label for="specialist" class="form__label">Specialist</label>
+                    </div>
+                    <div class="form__group field">
+                        <input name="qualification" type="input" class="form__field" value="@Model.qualification" required="">
+                        <label for="qualification" class="form__label">Qualification</label>
+                    </div>
+                    <div class="form__group field">
+                        <input name="yearofexperience" type="input" class="form__field" value="@Model.yearofexperience" required="">
+                        <label for="yearofexperience" class="form__label">Year Of Experience</label>
+                    </div>
+                    <div class="form__group field">
+                        <textarea name="studyprocess" class="form__field" required="">@Model.studyprocess</textarea>
+                        <label for="achievement" class="form__label">Study Achievement</label>
+                    </div>
+                </div>
+
+                <div>
+                    <footer class="modal-footer">
+                        <button type="button" id="closeModal" class="close-modal">Close</button>
+                        <button type="submit" class="add-confirm-btn">Save Change</button>
+                    </footer>
+                </div>
+            </div>
+        </form>
+
+        </div>
+    </div>
+</div>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+       
+
+        // Giả sử @Model.studyprocess là một chuỗi văn bản từ server
+        var studyProcessValue = "@Model.studyprocess";
+
+        // Thay thế các dấu . hoặc ; bằng dấu xuống dòng
+        var formattedValue = studyProcessValue.replace(/\.|;/g, '$&\n');
+
+        // Đặt giá trị vào textarea
+        document.getElementById('studyprocess').value = formattedValue;
+
+        var careerValue = "@Model.Career";
+
+        // Thay thế các dấu . hoặc ; bằng dấu xuống dòng
+        var formattedCareerValue = careerValue.replace(/\.|;/g, '$&\n');
+
+        // Đặt giá trị vào textarea
+        document.getElementById('career').value = formattedCareerValue;
+
+        
+    });
+    document.querySelector('.close-modal').addEventListener('click', function () {
+        window.location.href = '@Url.Action("listdoctor", "User", new { area = "Admin" })';
+    });
+</script>
+<script src="~/js/Doctor.js"> </script>
+

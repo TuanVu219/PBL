@@ -1,0 +1,136 @@
+﻿ul {
+    list-style: none;
+}
+
+.image-box img {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+    border-radius: 50%;
+}
+
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.image-box:hover img {
+    opacity: 0.7;
+}
+
+.image-box:hover .middle {
+    opacity: 1;
+}
+
+.image-box .icon {
+    color: #000;
+    font-size: 50px;
+    padding: 16px 32px;
+}
+
+.change-avt-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 17px;
+    padding: 0.5em 1em;
+    border: transparent;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+    background: rgb(83, 169, 255);
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+    .change-avt-btn:hover {
+        background: rgb(2,0,36);
+        background: linear-gradient(90deg, rgba(30,144,255,1) 0%, rgba(0,212,255,1) 100%);
+    }
+
+    .change-avt-btn:active {
+        transform: translate(0em, 0.2em);
+    }
+
+
+
+.cardBox {
+    grid-template-columns: 1fr 1.7fr;
+}
+
+    .cardBox .card {
+        display: block;
+    }
+
+        .cardBox .card:hover {
+            background: none;
+            cursor: auto;
+        }
+
+        .cardBox .card.info-1 {
+            text-align: center;
+            padding: 50px 70px;
+            position: relative;
+        }
+
+.info-1 .name-info {
+    padding: 10px 0px;
+}
+
+.info-1 .sub-name-info {
+    color: #6b6b6b;
+}
+
+.cardBox .card.info-2 {
+    padding: 0px 70px
+}
+
+.card .info-row {
+    display: flex;
+    gap: 100px;
+    font-size: 20px;
+    padding: 20px 0;
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+    .card .info-row .first-text {
+        font-weight: 650;
+        width: 200px;
+        padding-right: 50px;
+    }
+
+.info-3 .profile {
+    color: #3f3f3f;
+    font-weight: 350;
+    font-size: 20px;
+    line-height: 38px;
+}
+
+.info-4 .rit-data {
+    padding: 20px 30px;
+}
+
+    .info-4 .rit-data h2 {
+        margin-bottom: 10px;
+    }
+
+    .info-4 .rit-data ul li {
+        padding: 10px 30px;
+    }
+
+        .info-4 .rit-data ul li span {
+            float: right;
+     
+            }
+    .info-4 .rit-data p {
+        opacity:0.5;
+    }

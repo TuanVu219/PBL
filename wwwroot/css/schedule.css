@@ -1,0 +1,271 @@
+﻿.modal-header {
+    position: relative;
+    background: var(--white);
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    font-size: 35px;
+    text-shadow: 2px 2px 8px #4d4d4d98;
+    color: #0056b3;
+    margin: 40px 10px 15px;
+}
+
+
+
+
+
+
+
+.scheduleForm {
+    max-width: 1200px;
+    margin: 0 40px;
+    /* text-align: center; */
+}
+
+    /* .scheduleForm div {
+    height: 58.2px;
+} */
+
+    .scheduleForm div label {
+        margin: 0 20px;
+    }
+
+        .scheduleForm div label input[type="radio"] {
+            display: none;
+        }
+
+        .scheduleForm div label input[type="checkbox"] {
+            display: none;
+        }
+
+        .scheduleForm div label span {
+            position: relative;
+            display: inline-block;
+            background: rgba(170, 170, 170, 0.4);
+            padding: 10px 15px;
+            color: rgb(0, 157, 255);
+            font-weight: bold;
+            border-radius: 30px;
+            transition: 0.5s;
+            user-select: none;
+            overflow: hidden;
+            min-width: 150px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+    .scheduleForm .shift span {
+        color: #fff;
+        background-color: #000;
+    }
+
+    .scheduleForm .morning input[type="radio"]:checked ~ span {
+        background: rgb(132, 255, 0);
+        color: #e8fd4d;
+        text-shadow: 3px 3px 10px #000;
+        box-shadow: 0px 2px 15px #333;
+    }
+
+    .scheduleForm .afternoon input[type="radio"]:checked ~ span {
+        background: rgb(255, 81, 0);
+        color: #e8fd4d;
+        text-shadow: 3px 3px 10px #000;
+        box-shadow: 0px 2px 15px #333;
+    }
+
+    .scheduleForm .evening input[type="radio"]:checked ~ span {
+        background: rgb(102, 0, 255);
+        color: #e8fd4d;
+        text-shadow: 3px 3px 10px #000;
+        box-shadow: 0px 2px 15px #333;
+    }
+
+
+    .scheduleForm div label input[type="checkbox"]:checked ~ span {
+        background: rgb(0, 157, 255);
+        color: #fff;
+        box-shadow: 0px 2px 15px #333;
+    }
+
+.shift {
+    display: none;
+    animation: showShift ease 0.5s;
+}
+
+
+@keyframes showShift {
+    from {
+        opacity: 0;
+        transform: translateX(-150px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+.schedule p {
+    word-spacing: 2px;
+    font-style: italic;
+    color: #414141;
+}
+
+.time {
+    width: 100%;
+    margin: 5px 90px;
+    display: flex;
+}
+
+.sh-time {
+    display: flex;
+}
+
+.time .start-time,
+.time .finish-time {
+    font-size: 16px;
+    margin: 0 60px;
+}
+
+.time span {
+    margin-right: 15px;
+    font-weight: 550;
+}
+
+.time select {
+    width: 150px;
+    height: 35px;
+    font-size: 16px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px #333;
+    border: none;
+    color: rgb(255, 81, 0);
+    letter-spacing: 3px;
+    text-align: center;
+    font-weight: 600;
+}
+
+
+.modal-body {
+    padding: 16px;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-150px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-footer {
+    width: 100%;
+    height: 70px;
+    display: inline-block;
+    text-align: center;
+}
+
+
+    .modal-footer button {
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        padding: 15px 20px;
+        margin: 20px;
+        gap: 15px;
+        background-color: #181717;
+        border-radius: 35px;
+        border: none;
+        cursor: pointer;
+        transition: 400ms;
+    }
+
+    .modal-footer p {
+        color: white;
+        display: inline-block;
+        font-weight: 700;
+        font-size: 1em;
+        transition: 400ms;
+    }
+
+    .modal-footer i {
+        transition: 400ms;
+    }
+
+    .modal-footer #day-uncheck {
+        color: red;
+    }
+
+        .modal-footer #day-uncheck:hover {
+            background-color: red;
+            color: #fff;
+        }
+
+
+    .modal-footer #day-change {
+        color: #fff;
+    }
+
+
+        .modal-footer #day-change:hover {
+            background-color: #8400ff;
+            color: #000;
+        }
+
+    .modal-footer #day-confirm {
+        background-color: #007bff;
+        font-weight: 700;
+        color: #fff;
+    }
+
+        .modal-footer #day-confirm:hover {
+            background-color: #3b82f6;
+            box-shadow: 0 0 0 5px #3b83f65f;
+            color: #fff;
+        }
+
+
+
+.custom-alert {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 2px solid #000;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.custom-alert-content {
+    text-align: center;
+}
+
+#custom-alert {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    max-width: 400px;
+    transform: translateX(-50%);
+    background-color: #ff0000;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+}
+
+#custom-alert-message {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}

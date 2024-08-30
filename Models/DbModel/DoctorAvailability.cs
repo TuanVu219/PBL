@@ -12,7 +12,7 @@ namespace PBL3Hos.Models.DbModel
             public string AvailableDate { get; set; } 
             public TimeSpan StartTime { get; set; }
             public TimeSpan EndTime { get; set; }
-            public string Shift { get; set; }
+            public string? Shift { get; set; }
         [ForeignKey("Doctor")]
             public string DoctorId { get; set; }
 

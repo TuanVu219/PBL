@@ -1,0 +1,87 @@
+﻿.schedule-off-body {
+    text-align: center;
+}
+
+.input {
+    width: 250px;
+    height: 44px;
+    background-color: #05060f0a;
+    border-radius: .5rem;
+    padding: 0 1rem;
+    border: 2px solid transparent;
+    font-size: 1rem;
+    transition: border-color .3s cubic-bezier(.25,.01,.25,1) 0s, color .3s cubic-bezier(.25,.01,.25,1) 0s,background .2s cubic-bezier(.25,.01,.25,1) 0s;
+}
+
+.label {
+    display: block;
+    margin-bottom: .3rem;
+    font-size: 20px;
+    font-weight: bold;
+    color: #05060f99;
+    transition: color .3s cubic-bezier(.25,.01,.25,1) 0s;
+}
+
+.input:hover, .input:focus, .input-group:hover .input {
+    outline: none;
+    border-color: #05060f;
+}
+
+.input-group:hover .label, .input:focus {
+    color: #05060fc2;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    font-size: 20px;
+}
+
+.confirm-btn {
+    --color: #ffd900;
+    --btn-text-color: #ff3c00;
+    font-family: inherit;
+    display: inline-block;
+    width: 8em;
+    height: 2.6em;
+    line-height: 2.5em;
+    overflow: hidden;
+    border: 2px solid var(--blue);
+    transition: color .5s;
+    z-index: 1;
+    font-size: 17px;
+    border-radius: 20px;
+    font-weight: 500;
+    color: var(--blue);
+    position: absolute;
+    align-items: center;
+    margin-left: 50px;
+}
+
+    .confirm-btn:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        background: var(--blue);
+        height: 150px;
+        width: 200px;
+        border-radius: 50%;
+    }
+
+    .confirm-btn:hover {
+        color: #fff;
+    }
+
+    .confirm-btn:before {
+        top: 100%;
+        left: 100%;
+        transition: all .7s;
+    }
+
+    .confirm-btn:hover:before {
+        top: -30px;
+        left: -30px;
+    }
+
+    .confirm-btn:active:before {
+        background: #03a4f5;
+        transition: background 0s;
+    }

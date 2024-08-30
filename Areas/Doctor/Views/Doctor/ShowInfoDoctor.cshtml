@@ -1,0 +1,209 @@
+﻿@using PBL3Hos.ViewModel
+@model InfoUser
+@{
+    ViewData["Title"] = "ShowInfoDoctor";
+    Layout = "~/Areas/Doctor/Views/Shared/DoctorLayoutPage1.cshtml";
+}
+
+
+
+
+    <link rel="stylesheet" href="~/css/doctor-in4.css?v=3">
+   
+
+
+    
+
+            
+            <div class="cardBox">
+                <div class="card info-1">
+        <form action="/doctor/doctor/saveimg1" method="post" id="imageUploadForm" enctype="multipart/form-data">
+
+        <div class="image-box">
+            @if (Model.ImgUrl == null)
+            {
+                <img id="profileImage" src=" https://png.pngtree.com/png-vector/20190710/ourlarge/pngtree-business-user-profile-vector-png-image_1541960.jpg" alt="">
+            }
+            else
+            {
+               
+                <img id="profileImage" src="~/PatientsIMG/@Model.ImgUrl" alt="">
+
+            }
+            <button type="submnit" class="change-avt-btn" id="changeAvtBtn">
+                Update Photo
+            </button>
+            <div class="middle">
+                <div class="icon">
+                    <i class="fa-solid fa-images"></i>
+                </div>
+            </div>
+                <input name="ImgFile" type="file" id="fileInput" style="display: none;" accept="image/*">
+        </div>
+        </form>
+
+                    <div class="name-info">
+                        <h1>@Model.Fullname</h1>
+                    </div>
+
+                    <div class="sub-name-info">
+                        <h3>@Model.Qualification</h3>
+                    </div>
+                </div>
+
+                <div class="card info-2">   
+                    <div class="info-row">
+                        <div class="first-text">
+                            Full Name
+                        </div>
+                        <div class="second-text">
+                            @Model.Fullname
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <div class="first-text">
+                            Birthday
+                        </div>
+                        <div class="second-text">
+                           @Model.DateofBirth
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <div class="first-text">
+                            Email
+                        </div>
+                        <div class="second-text">
+                            @Model.Email
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <div class="first-text">
+                            Phone
+                        </div>
+                        <div class="second-text">
+                            @Model.Mobile
+                        </div>
+                    </div>
+
+                    <div class="info-row">
+                        <div class="first-text">
+                            Specialist
+                        </div>
+                        <div class="second-text">
+                            @Model.Specialist
+                        </div>
+                    </div>
+
+                    <div class="info-row">
+                        <div class="first-text">
+                            Address
+                        </div>
+                        <div class="second-text">
+                            @Model.Adress
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card info-3">
+                    <h1>Profile</h1>
+                    <div class="profile">
+                        <p>
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                            Sed dolorem assumenda veniam odio, nesciunt cumque,
+                            temporibus numquam quod ducimus nihil nobis officia autem provident impedit!
+                            Architecto repudiandae quo accusantium sunt.
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Reiciendis labore optio repellat cum temporibus dolorem,
+                            deserunt eaque ut suscipit veritatis distinctio
+                            quia eos voluptatem minus velit saepe nihil
+                            blanditiis inventore.
+                        </p>
+                    </div>
+                </div>
+                <div class="card info-4">
+                    <div class="rit-data">
+                        <h2>Academic Qualification</h2>
+                        <ul>
+                            <li>
+                                <b>
+                                    Highland University
+                                    <span>2012 - 2014</span>
+                                </b>
+                                <p>Medical Degree</p>
+                            </li>
+                            <li>
+                                <b>
+                                    Highland University
+                                    <span>2012 - 2014</span>
+                                </b>
+                                <p>Medical Degree</p>
+                            </li>
+                            <li>
+                                <b>
+                                    Highland University
+                                    <span>2012 - 2014</span>
+                                </b>
+                                <p>Medical Degree</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="rit-data">
+                        <h2>Academic Awards & Distinctions</h2>
+                        <ul>
+                            <li>
+                                <b>
+                                    Highland Excellance Award
+                                    <span>2012 - 2014</span>
+                                </b>
+                            </li>
+                            <li>
+                                <b>
+                                    Reeds University Externam Scholarship
+                                    <span>2012 - 2014</span>
+                                </b>
+                            </li>
+                            <li>
+                                <b>
+                                    Homptan Millinium Award
+                                    <span>2012 - 2014</span>
+                                </b>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="rit-data">
+                        <h2>Research Activity & Presentations</h2>
+                        <ul>
+                            <li>
+                                <b>
+                                    Assesent of Metabolism
+                                    <span>2012 - 2014</span>
+                                </b>
+                            </li>
+                            <li>
+                                <b>
+                                    Assesent of Metabolism
+                                    <span>2012 - 2014</span>
+                                </b>
+                            </li>
+                            <li>
+                                <b>
+                                    Assesent of Metabolism
+                                    <span>2012 - 2014</span>
+                                </b>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========== Scripts =========  -->
+    <script type="module" src="~/js/main1.js"></script>
+    <script type="module" src="~/js/changeavs.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+

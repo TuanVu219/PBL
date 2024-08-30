@@ -1,0 +1,160 @@
+﻿@using PBL3Hos.ViewModel
+@model InfoUser
+@{
+    ViewData["Title"] = "EditProfile";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<link rel="stylesheet" href="~/css/ShowInfo.css?v=4" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/notification.css" asp-append-version="true" />
+
+<div class="background-profile container-fluid">
+    <div class="left-content col-2">
+        <div class="profile">
+            <form action="/account/saveimg1" method="post" id="imageUploadForm" enctype="multipart/form-data">
+                <input type="file" id="fileInput" name="ImgFile" class="file-input" />
+                <label for="fileInput" class="file-label">
+                    @if (Model.ImgUrl==null)
+                    {
+
+                        <span><img id="profileImage" src=" https://png.pngtree.com/png-vector/20190710/ourlarge/pngtree-business-user-profile-vector-png-image_1541960.jpg" alt=""></span>
+                    }
+                    else{
+                    <span><img id="profileImage" src="~/PatientsIMG/@Model.ImgUrl" alt=""></span>
+                    }
+                </label>
+                <!-- Loại bỏ nút submit -->
+                <button class="btn-profile btn-left " type="submit">Update Photo</button>
+           </form>
+            <h4>@Model.Fullname</h4>
+            <p>@Model.Email</p>
+        </div>
+    </div>
+    <div class="right-content col-6">
+        <div class="edit-profile">
+            <h2>Edit profile</h2>
+            <form action="#">
+                <div class="container-input">
+                    <div class="col-5">
+                        <div class="input-box">
+                            <label for="">Fullname</label>
+                            <input name="Fullname" type="text" value="@Model.Fullname">
+                        </div>
+                        <div class="input-box">
+                            <label for="">Username</label>
+                            <input name="Username" type="text" value="@Model.UserName">
+                        </div>
+                        <div class="input-box">
+                            <label for="">Birthday</label>
+                            <input class="date-input no-calendar-icon" name="Birthday" type="date" value="@Model.DateofBirth">
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <div class="input-box">
+                            <label for="">Email</label>
+                            <input name="Email" type="email" value="@Model.Email" >
+                        </div>
+                        <div class="input-box">
+                            <label for="">Phone number</label>
+                                <input name="Mobile" type="text" value="@Model.Mobile">
+                        </div>
+                        <div class="input-box">
+                            <label for="">Address</label>
+                            <input name="Adress" type="text" value="@Model.City">
+                        </div>
+                    </div>
+                </div>
+                <div class="button-container">
+                    <button id="submitAppointment" type="submit" class="btn-profile">
+                        Edit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="notification-bgr successfull" style="display: none">
+    <div class="notification">
+        <h3>Successfull</h3>
+        <i class="fa-regular fa-circle-check successfull-bgr"></i>
+        <p>
+            You have successfully booked your appointment
+        </p>
+        <button>OK</button>
+    </div>
+</div>
+
+<div class="notification-bgr error" style="display: none">
+    <div class="notification">
+        <h3>Error</h3>
+        <i class="fa-regular fa-circle-xmark error-bgr"></i>
+        <p></p>
+        <button>OK</button>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#fileInput').change(function () {
+            var formData = new FormData($('#imageUploadForm')[0]);
+            $.ajax({
+                url: '/account/saveimg', // Đường dẫn đến hành động xử lý upload
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    if (response && response.newImageUrl) {
+                        $('#profileImage').attr('src', response.newImageUrl);
+                    } else {
+                        alert('Đã xảy ra lỗi khi tải ảnh lên.');
+                    }
+                },
+                error: function () {
+                    alert('Tải lên hình ảnh thất bại!');
+                }
+            });
+        });
+
+       
+    });
+
+    $('#submitAppointment').click(function (e) {
+        e.preventDefault();
+
+        var data = {
+            Fullname: $('input[name="Fullname"]').val(),
+            Username: $('input[name="Username"]').val(),
+            Birthday: $('input[name="Birthday"]').val(),
+            Email: $('input[name="Email"]').val(),
+            Mobile: $('input[name="Mobile"]').val(),
+            Adress: $('input[name="Adress"]').val()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "/account/editprofile",
+            data: data,
+            success: function (response) {
+                if (response.success) {
+                    $('.successfull').addClass('d-flex')
+                } else {
+                    $('.error').addClass('d-flex')
+                    $('.error p').text(response.message)
+                }
+            },
+            error: function (response) {
+
+            }
+        });
+    });
+    $('.notification button').click(function () {
+        $('.successfull').removeClass('d-flex') // Ẩn đi phần thông báo khi nút "OK" được nhấn
+        $('form').trigger("reset"); // Reset form sau khi ẩn đi phần thông báo
+        $('.error').removeClass('d-flex')
+    });
+
+
+</script>
+<script src="~/js/notification.js?v=1"></script>

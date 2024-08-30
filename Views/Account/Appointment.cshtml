@@ -4,126 +4,117 @@
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<h1>Appointment</h1>
+@* <h1>Appointment</h1>
 <form action="/account/appointment" method="post">
     <input type="hidden" name="DoctorId" value="@Model.DoctorId" />
     <input type="hidden" name="PatientId" value="@Model.PatientId" />
     <input type="hidden" name="id" value="@Model.Doctor.AccountId" />
     <table class="table">
-        <tr>
-            <th>User Name</th>
-            <td>@Model.Doctor.AppUser.UserName</td>
-        </tr>
-        <tr>
-            <th>Email</th>
-            <td>@Model.Doctor.AppUser.Email</td>
-         </tr>
-       
-      
-       
-
     </table>
     <div class="col-md-6">
         <div class="col-md-6">
             @Html.LabelFor(temp => temp.Date)
-            <input name="Date" id="Date" class="form-control" type="text" placeholder="Date" , value="@DateTime.Now.ToString("MM-dd-yyyy")" ,readonly onblur="checkDayOfWeek()" />
+            <input name="Date" id="Date" class="form-control" type="text" placeholder="Date" , value="Select Day..." ,readonly onblur="checkDayOfWeek"     />
             @Html.ValidationMessageFor(temp => temp.Date)
         </div>
     </div>
-    <div id="timeSelection3" class="col-md-6" style="display: none;">
-        <div class="col-md-6">
-            <label for="Time">Time</label>
-            <select class="form-control"
-                    id="Time"
-                    name="Starttime2">
-                <option value="">Please Select...</option>
-                <option value="7:00:00">7am-8am</option>
-                <option value="8:00:00">8am-9am</option>
-                <option value="9:00:00">9am-10am</option>
-                <option value="10:00:00">10am-11am</option>
-                <option value="13:00:00">1pm-2pm</option>
-                <option value="14:00:00">2pm-3pm</option>
-                <option value="15:00:00">3pm-4pm</option>
-                <option value="16:00:00">4pm-5pm</option>
-
-                <option value="19:00:00">7pm-8pm</option>
-                <option value="20:00:00">8pm-9pm</option>
-                <option value="21:00:00">9pm-10pm</option>
-
-            </select>
-        </div>
-    </div>
-    <div id="timeSelection" class="col-md-6" style="display: none;">
-        <div class="col-md-6">
-            <label for="Time">Time</label>
-            <select class="form-control"
-                    id="Time"
-                    name="Starttime"
-            >
-                <option value="">Please Select...</option>
-                <option value="07:00:00">7am-8am</option>
-                <option value="08:00:00">8am-9am</option>
-                <option value="09:00:00">9am-10am</option>
-                <option value="10:00:00">10am-11am</option>
-                <option value="13:00:00">1pm-2pm</option>
-                
-            </select>
-        </div>
-    </div>
-
-    <div id="timeSelection1" class="col-md-6" style="display: none;">
-        <div class="col-md-6">
-            <label for="Time">Time</label>
-            <select class="form-control"
-                    id="Time"
-                    name="Starttime1"
-                    >
-                <option value="">Please Select...</option>
-                <option value="13:00:00">1pm-2pm</option>
-                <option value="14:00:00">2pm-3pm</option>
-                <option value="15:00:00">3pm-4pm</option>
-                <option value="16:00:00">4pm-5pm</option>
-            </select>
-        </div>
-    </div>
-    <div id="timeSelection2" class="col-md-6" style="display: none;">
-        <div class="col-md-6">
-            <label for="Time">Time</label>
-            <select class="form-control"
-                    id="Time"
-                    name="Starttime3"
-                    >
-                <option value="">Please Select...</option>
-                <option value="19:00:00">7pm-8pm</option>
-                <option value="20:00:00">8pm-9pm</option>
-                <option value="21:00:00">9pm-10pm</option>
-               
-            </select>
-        </div>
-    </div>
-
    
+    <div id="timeSelection" class="col-md-6">
+        <div class="col-md-6">
+            <label for="Time">Time</label>
+            <select class="form-control" id="Time" name="StartTime" required>
+                <option value="">Please Select...</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-6">
+        @Html.LabelFor(temp => temp.Symptom)
+        @Html.TextBoxFor(temp => temp.Symptom, new { placeholder = "Symptom", @class = "form-control" })
+        @Html.ValidationMessageFor(temp => temp.Symptom)
+    </div>
 
     <p class="text-danger">@ViewBag.Error</p>
     <button type="submit" class="btn btn-success">Register</button>
 </form>
 
-<a href=@Url.Action("Index","Home")>Back</a>
+<a href=@Url.Action("Index","Home")>Back</a> *@
+<link rel="stylesheet" href="~/css/appointment.css">
+<link rel="stylesheet" href="~/css/notification.css">
 
+<form action="/account/appointment" method="post">
+    <input type="hidden" name="DoctorId" value="@Model.DoctorId" />
+    <input type="hidden" name="PatientId" value="@Model.PatientId" />
+    <input type="hidden" name="id" value="@Model.Doctor.AccountId" />
+<div class="body-test">
+    <div class="container-booking">
+        <div class="input-box">
+            <div class="nav-left">
+                <form action="#">
+                    <div class="box">
+                        <h3>Appointment</h3>
+                        <div class="nav-input">
+                            @Html.LabelFor(temp => temp.Date)
+                            <input name="Date" id="Date" class="form-control" type="text" placeholder="Date" , value="Select Day..." ,readonly onblur="checkDayOfWeek" />
+                            @Html.ValidationMessageFor(temp => temp.Date)
+                        </div>
+                        <div class="nav-input">
+                                <label for="Time">Time</label>
+                                <select class="form-control" id="Time" name="StartTime" required>
+                                    <option value="">Please Select...</option>
+                                </select>
+                        </div>
+                        <div class="nav-input">
+                            @Html.LabelFor(temp => temp.Symptom)
+                            @Html.TextBoxFor(temp => temp.Symptom, new { placeholder = "Symptom", @class = "form-control" })
+                            @Html.ValidationMessageFor(temp => temp.Symptom)
+                        </div>
+
+                            <button type="submit" class="login-home-button" id="submitAppointment">Confirm</button>
+
+                    </div>
+                </form>
+            </div>
+            <div class="nav-right">
+                <p>Thank you for choosing our online appointment service. Your trust means the world to us. We're committed to providing you with top-notch care and convenience. If you need anything, we're just a message away. Thanks again for choosing us!</p>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+<div class="notification-bgr successfull" style="display: none">
+    <div class="notification">
+        <h3>Successfull</h3>
+        <i class="fa-regular fa-circle-check successfull-bgr"></i>
+        <p>
+            You have successfully booked your appointment
+        </p>
+        <button>OK</button>
+    </div>
+</div>
+
+<div class="notification-bgr error" style="display: none">
+    <div class="notification">
+        <h3>Error</h3>
+        <i class="fa-regular fa-circle-xmark error-bgr"></i>
+        <p></p>
+        <button>OK</button>
+    </div>
+</div>
 <script>
     $(function () {
      
         // Lấy danh sách ngày và ca làm việc từ ViewBag
         var doctorAvailability = {
-    @foreach (var item in ViewBag.DoctorAvailability)
+    @foreach (var availability in ViewBag.DoctorAvailability)
     {
-        <text>
-                '@item.Key': '@item.Value',
-        </text> 
+        <text>'@availability.Key': [
+            @foreach (var tuple in availability.Value)
+            {
+                <text>'@(tuple.Item1)', '@(tuple.Item2)', </text>
+            }
+            ], </text>
     }
-            };
-
-
+    };
     var doctorAppointment = {
 @foreach (var item in ViewBag.DoctorAppointment)
 {
@@ -147,60 +138,51 @@
         var dateParts = inputDate.split('-');
         var selectedDate = new Date(dateParts[2], parseInt(dateParts[0]) - 1, dateParts[1]);
 
-        // Lấy tên thứ của ngày được chọn
         var dayOfWeekNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         var selectedDayOfWeek = dayOfWeekNames[selectedDate.getDay()];
 
-        var timeSelection = document.getElementById('timeSelection');
-        var timeSelection1 = document.getElementById('timeSelection1');
-        var timeSelection2 = document.getElementById('timeSelection2');
-        var timeSelection3 = document.getElementById('timeSelection3');
-
-        // Kiểm tra xem ngày được chọn có trong danh sách ca làm việc hay không
         if (isAvailableDay(selectedDayOfWeek)) {
-            // Hiển thị dropdownlist phù hợp với ngày được chọn
-            if (doctorAvailability[selectedDayOfWeek] === "Day") {
-                timeSelection.style.display = 'block';
-                timeSelection1.style.display = 'none';
-                timeSelection2.style.display = 'none';
-                timeSelection3.style.display = 'none';
-                hideAppointments(inputDate);
-                
+            var startEndTimes = doctorAvailability[selectedDayOfWeek];
+            var allTimes = [];
 
-            } else if (doctorAvailability[selectedDayOfWeek] === "Afternoon") {
-                timeSelection.style.display = 'none';
-                timeSelection1.style.display = 'block';
-                timeSelection2.style.display = 'none';
-                timeSelection3.style.display = 'none';
-                hideAppointments(inputDate);
-            }
-            else if (doctorAvailability[selectedDayOfWeek] === "Night") {
-                timeSelection.style.display = 'none';
-                timeSelection1.style.display = 'none';
-                timeSelection2.style.display = 'block';
-                timeSelection3.style.display = 'none';
-                hideAppointments(inputDate);
-            }
-            else {
-                timeSelection.style.display = 'none';
-                timeSelection1.style.display = 'none';
-                timeSelection2.style.display = 'none';
-                timeSelection3.style.display = 'block';
-                hideAppointments(inputDate);
+            // Lặp qua các cặp giá trị thời gian cho ngày đã chọn và thêm vào mảng
+            for (var i = 0; i < startEndTimes.length; i += 2) {
+                var startTime = startEndTimes[i];
+                var endTime = startEndTimes[i + 1];
+                var start = new Date("01/01/2000 " + startTime);
+                var end = new Date("01/01/2000 " + endTime);
+
+                // Thêm các thời gian vào mảng
+                while (start < end) {
+                    allTimes.push(start.toLocaleTimeString('en-US', { hour12: false }));
+                    start.setMinutes(start.getMinutes() + 30); // Tăng biến đếm
+                }
             }
 
+            // Sắp xếp mảng thời gian theo thứ tự tăng dần
+            allTimes.sort();
 
+            // Xóa các option trong dropdownlist
+            $('#Time').empty();
+            // Thêm một option mặc định
+            $('#Time').append($('<option>', {
+                value: "",
+                text: "Please Select..."
+            }));
 
-        } else {
-            // Ẩn dropdownlist nếu ngày không có trong danh sách ca làm việc
-            timeSelection.style.display = 'none';
-            timeSelection1.style.display = 'none';
-            timeSelection2.style.display = 'none';
-            timeSelection3.style.display = 'none';
-        }
+            // Thêm các thời gian đã sắp xếp vào dropdownlist
+            for (var j = 0; j < allTimes.length; j++) {
+                var timeOption = $('<option>', {
+                    value: allTimes[j],
+                    text: allTimes[j]
+                });
+                $('#Time').append(timeOption);
+            }
+           
+
+        } 
+        hideAppointments(inputDate);
     }
-
-    
     var disabledDates = @Html.Raw(ViewBag.BookedDatesJson);
     function disableDates(date) {
         var string = jQuery.datepicker.formatDate('mm-dd-yy', date);
@@ -209,41 +191,68 @@
 
     $("#Date").datepicker({
         dateFormat: 'mm-dd-yy',
-        minDate:0,
+        minDate: 0,
         beforeShowDay: disableDates,
         onSelect: function (dateText, inst) {
             checkDayOfWeek();
         }
     });
-  function hideAppointments(selectedDate) {
-    var appointments = doctorAppointment[selectedDate];
+    function hideAppointments(selectedDate) {
+        var appointments = doctorAppointment[selectedDate];
 
         if (appointments) {
-        // Lặp qua tất cả các dropdownlist và ẩn các mục có giá trị trong danh sách appointments
-            $('select[name="Starttime"] option, select[name="Time"] option,select[name="Starttime1"] option,select[name="Starttime2"] option,select[name="Starttime3"] option').each(function () {
-            var optionValue = $(this).val().toString();
+            // Xóa option đã được chọn
+            $('select[name="StartTime"] option').each(function () {
+                var optionValue = $(this).val().toString();
                 if (appointments.includes(optionValue)) {
-                // Ẩn các mục không phải của ngày được chọn
-                if (selectedDate === $('#Date').val()) {
                     $(this).prop('disabled', true);
                 } else {
                     $(this).prop('disabled', false);
                 }
-            } else {
-                // Hiển thị lại các mục cho ngày được chọn
-                if (selectedDate === $('#Date').val()) {
-                    $(this).prop('disabled', false);
+            });
+        } else {
+            
+            $('select[name="StartTime"] option').prop('disabled', false);
+        }
+    }
+    $('#submitAppointment').click(function(e) {
+        e.preventDefault();
+
+        var data = {
+            DoctorId: $('input[name="DoctorId"]').val(),
+            PatientId: $('input[name="PatientId"]').val(),
+            Date: $('#Date').val(),
+            StartTime: $('#Time').val(),
+            Symptom: $('input[name="Symptom"]').val(),
+            id: $('input[name="id"]').val()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "/account/appointment",
+            data: data,
+            success: function (response) {
+                if (response.success) {
+                    $('.successfull').addClass('d-flex')
+                } else {
+                    $('.error').addClass('d-flex')
+                    $('.error p').text(response.message)
                 }
+            },
+            error: function (response) {
+                
             }
         });
-    } else {
-        // Hiển thị lại tất cả các mục nếu không có cuộc hẹn nào được đặt cho ngày này
-            $('select[name="Starttime"] option, select[name="Time"] option,select[name="Starttime1"] option,select[name="Starttime2"] option,select[name="Starttime3"').prop('disabled', false);
-    }
-}
-            });
+    });
     
+            }); 
     
+    $('.notification button').click(function () {
+        $('.successfull').removeClass('d-flex') // Ẩn đi phần thông báo khi nút "OK" được nhấn
+        $('form').trigger("reset"); // Reset form sau khi ẩn đi phần thông báo
+        $('.error').removeClass('d-flex')
+    });
 
 
 </script>
+<script src="~/js/notification.js?v=1"></script>

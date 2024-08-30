@@ -1,0 +1,115 @@
+﻿body {
+}
+body {
+    margin-top: 0px;
+}
+
+header {
+    width: 100%;
+    height: 63px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #000;
+}
+
+    header a {
+        font-size: 18px;
+        text-decoration: none;
+    }
+
+    header .logo {
+        margin: 0 20px;
+        font-size: 30px;
+        font-weight: 900;
+    }
+
+    header .redirects a {
+        position: relative;
+        margin: 0 10px;
+        color: #000;
+    }
+
+        header .redirects a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 100%;
+            height: 1px;
+            background: #000;
+            transform-origin: center;
+            transform: scaleX(0);
+            transition: transform .5s;
+        }
+
+        header .redirects a:hover::after {
+            transform: scaleX(1);
+        }
+
+    header .account i {
+        margin-right: 5px;
+        font-size: 20px;
+    }
+/* css classify */
+.login-home-button {
+    --color: #0095ff;
+    font-family: inherit;
+    display: inline-block;
+    width: 8em;
+    height: 2.6em;
+    line-height: 2.5em;
+    margin: 5px 10px;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid var(--color);
+    transition: color .5s;
+    z-index: 1;
+    font-size: 17px;
+    border-radius: 10px;
+    font-weight: 700;
+    color: var(--color);
+    cursor: pointer;
+}
+
+    .login-home-button:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        background: var(--color);
+        height: 150px;
+        width: 200px;
+        border-radius: 50%;
+    }
+
+    .login-home-button:hover {
+        color: #fff;
+    }
+
+    .login-home-button:before {
+        top: 100%;
+        left: 100%;
+        transition: all .7s;
+    }
+
+    .login-home-button:hover:before {
+        top: -30px;
+        left: -30px;
+    }
+
+    .login-home-button:active:before {
+        background: #3a0ca3;
+        transition: background 0s;
+    }
+
+.start-now-button {
+    margin-left: 200px;
+}
+
+.login-home-button a {
+    text-decoration: none;
+}
+.logo-header img {
+    width: 127px;
+    margin-left: 24px;
+}

@@ -1,0 +1,113 @@
+﻿.notification-bgr {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(2px);
+    z-index:2;
+}
+
+.notification {
+    background-color: rgb(240, 240, 240);
+    position: relative;
+    padding: 35px;
+    min-height: 300px;
+    border-radius: 10px;
+    text-align: center;
+    min-width: 401px;
+    animation: animation ease-in-out 0.5s;
+}
+.confirm-bgr {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-confirm {
+    width: 400px;
+    min-height: 300px;
+    background-color: rgb(231, 231, 231);
+    text-align: center;
+    border-radius: 10px;
+}
+
+    .box-confirm h2 {
+        font-size: 35px;
+        font-family: monospace;
+        font-weight: 600;
+        margin-top: 22px;
+    }
+
+    .box-confirm i {
+        font-size: 80px;
+        padding: 7px 7px;
+        color: rgb(231, 231, 231);
+        background-color: rgb(221, 72, 72);
+        border-radius: 50%;
+    }
+
+    .box-confirm button {
+        font-size: 20px;
+        width: 110px;
+        height: 40px;
+        border-radius: 5px;
+        color: #fff;
+        border: none;
+        margin: 10px 10px;
+        margin-bottom: 20px;
+        cursor: pointer;
+    }
+
+    .box-confirm .yes-btn {
+        background-color: #559ef1;
+    }
+
+    .box-confirm .cancel-btn {
+        background-color: #dd4949;
+    }
+    .notification h3 {
+        margin: 30px 0;
+        font-weight: 700;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    .notification .successfull-bgr {
+        font-size: 70px;
+        color: rgb(36, 180, 117);
+    }
+
+    .notification p {
+        margin: 20px 0;
+        font-size: 15px;
+        font-weight: 500;
+        color: #8e8e8ee0;
+    }
+
+    .notification .error-bgr {
+        font-size: 70px;
+        color: rgb(225, 48, 48);
+    }
+
+    .notification button {
+        background-color: rgb(67, 167, 255);
+        height: 40px;
+        min-width: 100px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        color: #fff;
+        border: none;
+    }
+
+        .notification button:hover {
+            background-color: rgb(4, 116, 164);
+        }

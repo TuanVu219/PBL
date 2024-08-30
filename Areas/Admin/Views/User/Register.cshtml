@@ -1,5 +1,5 @@
-﻿@using PBL3Hos.ViewModel
-@model RegisterVM
+﻿@using PBL3Hos.Areas.Admin.Models
+@model RegisterVMDT
 @{
     ViewData["Title"] = "Register";
     Layout = "~/Areas/Admin/Views/Shared/AdminLayoutPage1.cshtml";
@@ -13,6 +13,12 @@
             @Html.LabelFor(temp => temp.Username)
             @Html.TextBoxFor(temp => temp.Username, new { placeholder = "UserName", @class = "form-control" })
             @Html.ValidationMessageFor(temp => temp.Username)
+        </div>
+
+        <div class="col-md-6">
+            @Html.LabelFor(temp => temp.Fullname)
+            @Html.TextBoxFor(temp => temp.Fullname, new { placeholder = "Fullname", @class = "form-control" })
+            @Html.ValidationMessageFor(temp => temp.Fullname)
         </div>
         <div class="col-md-6">
             @Html.LabelFor(temp => temp.Email)
@@ -55,6 +61,50 @@
             @Html.TextBoxFor(temp => temp.City, new { placeholder = "City", @class = "form-control" })
             @Html.ValidationMessageFor(temp => temp.City)
         </div>
+       
+
+        <div class="col-md-6">
+            <label for="Specialist">Specialist</label>
+            @Html.DropDownListFor(row=>row.Specialist,new List<SelectListItem>()
+                {
+        new SelectListItem(){Text="Cardiology",
+        Value="Cardiology"},
+        new SelectListItem(){Text="Neurology",
+        Value="Neurology"},
+        new SelectListItem(){Text="Psychology",
+        Value="Psychology"},
+        new SelectListItem(){Text="Dermatology",
+        Value="Dermatology"},
+        },"Please Select...",new{@class="form-control"})
+                  
+        @Html.ValidationMessageFor(temp => temp.Specialist)
+        </div>
+
+        <div class="col-md-6">
+            @Html.LabelFor(temp => temp.Career)
+            @Html.TextAreaFor(temp => temp.Career, new { placeholder = "Career", @class = "form-control", rows = 5 })
+            @Html.ValidationMessageFor(temp => temp.Career)
+        </div>
+
+        <div class="col-md-6">
+            @Html.LabelFor(temp => temp.qualification)
+            @Html.TextBoxFor(temp => temp.qualification, new { placeholder = "Qualification", @class = "form-control" })
+            @Html.ValidationMessageFor(temp => temp.qualification)
+        </div>
+
+        <div class="col-md-6">
+            @Html.LabelFor(temp => temp.yearofexperience)
+            @Html.TextBoxFor(temp => temp.yearofexperience, new { placeholder = "Year Of Experience", @class = "form-control" })
+            @Html.ValidationMessageFor(temp => temp.yearofexperience)
+        </div>
+
+        <div class="col-md-6">
+            @Html.LabelFor(temp => temp.studyprocess)
+            @Html.TextAreaFor(temp => temp.studyprocess, new { placeholder = "Process of Study", @class = "form-control", rows = 5 })
+            @Html.ValidationMessageFor(temp => temp.studyprocess)
+        </div>
+
+
     </div>
     <button type="submit" class="btn btn-success">Register</button>
 }

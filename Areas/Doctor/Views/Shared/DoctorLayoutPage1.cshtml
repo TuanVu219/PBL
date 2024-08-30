@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+   @*  <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <meta charset="utf-8" />
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
@@ -14,11 +14,29 @@
         .field-validation-error {
             color: red;
         }
-    </style>
+    </style> *@
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmony Health Clinic</title>
+    <!-- ======= Styles ====== -->
+    <link rel="stylesheet" href="/css/style.css?v=5">
+    <link rel="stylesheet" href="/css/patient.css?v=2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" type="image/png" href="/fonts/favicon.png">
+    <link rel="stylesheet" href="/css/Doctor.css?v=2">
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+
+
 </head>
 <body>
  
-    <nav class="navbar navbar-expand-sm bg-info navbar-dark">
+  @*   <nav class="navbar navbar-expand-sm bg-info navbar-dark">
         <a class="navbar-brand" href="#">Doctor</a>
         <div class="col-8">
             <ul class="navbar-nav">
@@ -45,6 +63,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/doctor/doctor/scheduleoff ">Schedule Off</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/doctor/doctor/statistics ">Statistics</a>
+                    </li>
                 }
 
             </ul>
@@ -60,6 +81,112 @@
 
         <div class="col-10" style="min-height:610px">
             @RenderBody()
+        </div> *@
+
+      <!-- =============== Navigation ================ -->
+
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="index.html">
+                        <span class="icon">
+                            <img src="/fonts/Logo1.png" alt="">
+                        </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/doctor/doctor/index">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/doctor/doctor/doctorschedule">
+                        <span class="icon">
+                            <ion-icon name="calendar-outline"></ion-icon>
+                        </span>
+                        <span class="title">Doctor's Schedule</span>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="/doctor/doctor/listappointment">
+                        <span class="icon">
+                            <ion-icon name="calendar-outline"></ion-icon>
+                        </span>
+                        <span class="title">List Appointment</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/doctor/doctor/showschedule">
+                        <span class="icon">
+                            <ion-icon name="calendar-outline"></ion-icon>
+                        </span>
+                        <span class="title">Show Schedule</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/doctor/doctor/scheduleoff">
+                        <span class="icon">
+                            <ion-icon name="notifications-off-outline"></ion-icon></span>
+                        <span class="title">Schedule Off</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/doctor/doctor/showinfodoctor">
+                        <span class="icon">
+                            <ion-icon name="information-circle-outline"></ion-icon>
+                        </span>
+                        <span class="title">Your Profile</span>
+                    </a>
+                </li>
+
+               
+
+                <li>
+                    <a href="/account/logout">
+                        <span class="icon">
+                            <ion-icon name="log-out-outline"></ion-icon>
+                        </span>
+                        <span class="title">Sign Out</span>
+                    </a>
+                </li>
+            </ul>
         </div>
+
+        <!-- ========================= Main ==================== -->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+
+                <div class="search">
+                    <label>
+                        <input type="text" placeholder="Search here">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </label>
+                </div>
+
+                <div class="user">
+                </div>
+            </div>
+            <div class="container-fluid">
+
+                <div class="col-10" style="min-height:610px">
+                    @RenderBody()
+                </div>
+                <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+                <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 </body>
 </html>

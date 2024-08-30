@@ -13,19 +13,20 @@ namespace PBL3Hos.Models.DbModel
 
             public int Id { get; set; } // Khóa chính của Appointment
 
-        public DateTime Date { get; set; } // Thời gian cuộc hẹn
+            public DateTime Date { get; set; } // Thời gian cuộc hẹn
+            public string? Symptom {  get; set; }
 
             // Khóa ngoại trỏ đến Doctor
             [ForeignKey("Doctor")]
             public string DoctorId { get; set; }
-            public UserDoctor Doctor { get; set; }
+            public virtual UserDoctor Doctor { get; set; }
 
             // Khóa ngoại trỏ đến Patient
             [ForeignKey("Patient")]
             public string PatientId { get; set; }
-            public UserPatient Patient { get; set; }
+            public virtual UserPatient Patient { get; set; }
         }
 
-    
+     
 
 }

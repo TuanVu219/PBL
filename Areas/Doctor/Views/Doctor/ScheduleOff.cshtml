@@ -1,29 +1,58 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "ScheduleOff";
     Layout = "~/Areas/Doctor/Views/Shared/DoctorLayoutPage1.cshtml";
 }
+<link rel="stylesheet" href="~/css/ScheduleOff.css?v=1">
 
-<h1>ScheduleOff</h1>
 <form action="/doctor/doctor/scheduleoff" method="post">
-    <input type="hidden" name="DoctorId" value="@ViewBag.DoctorId" />
-   
-    
- 
+    @* <input type="hidden" name="DoctorId" value="@ViewBag.DoctorId" />
+
     <table class="table">
         <tr>
             <div class="col-md-6">
                <label for="DateOff"></label>
-                <input type="date"
-                       class=form-control"
-                       id="DateOff"
-                       name="DateOff" />
-            </tr>
-        </div>
+                <input name="DateOff" id="Date" class="form-control" type="text" placeholder="Date" , value="Select Day..." />
+            </div>
+        </tr>
     </table>
    
    
-    <button type="submit" class="btn btn-success">Register</button>
-</form>
+    <button type="submit" class="btn btn-success">Register</button> *@
+    <input type="hidden" name="DoctorId" value="@ViewBag.DoctorId" />
+    <div class="schedule-off">
+        <header class="schedule-off-header patient-header">
+            Schedule Off
+        </header>
+        <div class="schedule-off-body">
+            <div class="input-group">
+                <label class="label">Choose your day off</label>
+                <input name="DateOff" id="Date" class="form-control input" type="text" placeholder="Date" , value="Select Day..." />
 
-<a href=@Url.Action("Index","Home")>Back</a>
+
+                <button class="confirm-btn" type="submit">
+                    Confirm
+                </button>
+            </div>
+
+        </div>
+
+</form>
+   <script>
+    $(document).ready(function () {
+        var disabledDates = @Html.Raw(ViewBag.BookedDatesJson);
+
+        function disableDates(date) {
+            var string = jQuery.datepicker.formatDate('mm-dd-yy', date);
+            return [disabledDates.indexOf(string) == -1];
+        }
+
+        $("#Date").datepicker({
+            dateFormat: 'mm-dd-yy',
+            minDate: 0,
+            beforeShowDay: disableDates
+        });
+    });
+</script>
+<script src="~/js/main1.js"></script>
+<script src="~/js/sortTable.js"></script>
+<script src="~/js/Doctor.js"></script>

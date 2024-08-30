@@ -1,8 +1,146 @@
-﻿
+﻿@model Dictionary<int, Tuple<double, int>>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Doctor/Views/Shared/DoctorLayoutPage1.cshtml";
 }
 
-<h1>Welcome Doctor</h1>
+<!-- ======================= Cards ================== -->
+@{
+    int MonthNow = DateTime.Now.Month;
+    
+}
+@* @foreach (var item in Model)
+{
+
+    if (item.Key<MonthNow)
+    {
+        <tr>
+            <td>@item.Key</td>
+            <td>@item.Value.Item1</td>
+            <td>@item.Value.Item2</td>
+        </tr>
+    }
+} *@
+
+    <div class="cardBox">
+    @foreach (var item in Model)
+    {
+
+        float Salary = (float)(item.Value.Item1 * 50);
+
+
+        if (item.Key == MonthNow-1)
+        {
+            <div class="card">
+                <div>
+                    <div class="numbers">@item.Value.Item1</div>
+                    <div class="cardName">Total Hours</div>
+                </div>
+
+                <div class="iconBx">
+                    <ion-icon name="timer-outline"></ion-icon>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="numbers">@item.Value.Item2</div>
+                    <div class="cardName">Patients</div>
+                </div>
+
+                <div class="iconBx">
+                    <ion-icon name="person-outline"></ion-icon>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="numbers">@ViewBag.DoctorAppointment</div>
+                    <div class="cardName">Today's Operations</div>
+                </div>
+
+                <div class="iconBx">
+                    <ion-icon name="bug-outline"></ion-icon>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="numbers">$@Salary</div>
+                    <div class="cardName">Earning</div>
+                </div>
+
+                <div class="iconBx">
+                    <ion-icon name="cash-outline"></ion-icon>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+
+
+<!-- ================ Order Details List ================= -->
+<div class="details">
+    <div class="recentOrders">
+        <div class="cardHeader">
+            <h2>New Patients</h2>
+            <a href="patient.html" class="btn">View All</a>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Phone Number</td>
+                    <td>Status</td>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in ViewBag.PatientList)
+                {
+                    <tr>
+                        <td>@item.Key</td>
+                        <td>@item.Value.Item1</td>
+                        <td>@item.Value.Item2</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ================= New Customers ================ -->
+    <div class="recentCustomers">
+        <div class="cardHeader">
+            <h2>Recent </h2>
+        </div>
+
+        <table>
+             @foreach (var item in ViewBag.PatientList)
+                {
+                <tr>
+                    <td width="60px">
+                        @if (item.Value.Item3 == null)
+                        {
+                            <div class="imgBx"><img src="/fonts/customer01.jpg" alt=""></div>
+                        }
+                        else
+                        {
+                            <div class="imgBx"><img src="~/PatientsIMG/@item.Value.Item3" alt=""></div>
+                        }
+                    </td>
+                <td>
+                    <h4> @item.Key <br> <span>Việt Nam</span></h4>
+                </td>
+            </tr>
+                }
+
+        </table>
+    </div>
+</div>
+        </div>
+    </div>
+<script type="module" src="/js/main.js"></script>
+
 

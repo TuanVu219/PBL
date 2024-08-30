@@ -1,0 +1,101 @@
+﻿.header {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    background-color: #c3e4ff;
+    border-bottom: 1px solid #000;
+    justify-content: center;
+    align-items: center;
+}
+
+    .header h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 0px 0px;
+    }
+
+.container-doctor-table {
+    border: 2px solid;
+    height: 75vh;
+    margin: 50px auto;
+}
+
+.header-list-doctor {
+    display: flex;
+    align-items: center;
+}
+
+    .header-list-doctor h4 {
+        font-weight: 600;
+    }
+
+    .header-list-doctor .date-make-appointment {
+        zoom: 1.3;
+        border: 2px solid #2a6af4;
+        border-radius: 5px;
+        margin-left: 20px;
+        margin-bottom: 19px;
+        margin-right: 5px;
+        /* position: absolute;
+    left: 280px;
+    top : 15px; */
+    }
+
+.container-doctor-table .table-doctor {
+    height: 450px;
+    overflow-x: auto;
+    border: 1px solid;
+}
+/* btn search */
+.btn-search {
+    background-color: #75c8ff !important;
+    color: #fff;
+}
+/* btn table */
+.button-table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 10px;
+    gap: 15px;
+    background-color: white;
+    outline: 1px #007ACC solid;
+    outline-offset: -3px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: 400ms;
+    color: #007ACC;
+    font-weight: bold;
+}
+
+    .button-table .text {
+        color: #007ACC;
+        font-weight: 700;
+        font-size: 1em;
+        transition: 400ms;
+    }
+
+    .button-table svg path {
+        transition: 400ms;
+    }
+
+    .button-table:hover {
+        background-color: #007ACC;
+    }
+
+        .button-table:hover .text {
+            color: white;
+        }
+
+        .button-table:hover svg path {
+            fill: #007ACC;
+        }
+
+    .button-table a {
+        text-decoration: none;
+    }
+    .button-table.disabled {
+        opacity: 0.5; /* Giảm độ mờ */
+        pointer-events: none; /* Không thể nhấp vào */
+    }

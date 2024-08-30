@@ -1,0 +1,120 @@
+﻿.show-schedule-header {
+    position: relative;
+    background: var(--white);
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    font-size: 35px;
+    text-shadow: 2px 2px 8px #4d4d4d98;
+    color: #0056b3;
+    margin: 40px 10px 15px;
+}
+
+.schedule-list {
+    position: relative;
+    display: grid;
+    min-height: 500px;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    margin: 0px 10px 15px;
+}
+
+    .schedule-list table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        font-size: 20px;
+    }
+
+        .schedule-list table tbody {
+            font-size: 17px;
+            word-spacing: 15px;
+        }
+
+
+        .schedule-list table thead td {
+            font-weight: 600;
+        }
+
+        .schedule-list table tr {
+            color: var(--black1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+            .schedule-list table tr:last-child {
+                border-bottom: none;
+            }
+
+        .schedule-list table tbody tr:hover {
+            background: var(--blue);
+            color: var(--white);
+        }
+
+        .schedule-list table tr td {
+            padding: 10px;
+            text-align: center;
+        }
+
+    .schedule-list ul {
+        list-style: none;
+    }
+
+        .schedule-list ul li {
+            margin: 10px;
+        }
+
+.edit-btn {
+    --color: #ffd900;
+    --btn-text-color: #ff3c00;
+    font-family: inherit;
+    display: inline-block;
+    width: 10em;
+    height: 2.6em;
+    line-height: 2.5em;
+    overflow: hidden;
+    border: 2px solid var(--blue);
+    transition: color .5s;
+    z-index: 1;
+    font-size: 17px;
+    border-radius: 20px;
+    font-weight: 500;
+    color: var(--blue);
+    position: absolute;
+    right: 0;
+    align-items: center;
+    margin-right: 30px;
+}
+
+    .edit-btn:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        background: var(--blue);
+        height: 150px;
+        width: 200px;
+        border-radius: 50%;
+    }
+
+    .edit-btn:hover {
+        color: #fff;
+    }
+
+    .edit-btn:before {
+        top: 100%;
+        left: 100%;
+        transition: all .7s;
+    }
+
+    .edit-btn:hover:before {
+        top: -30px;
+        left: -30px;
+    }
+
+    .edit-btn:active:before {
+        background: #03a4f5;
+        transition: background 0s;
+    }

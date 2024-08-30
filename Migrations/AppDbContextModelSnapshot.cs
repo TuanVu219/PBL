@@ -161,6 +161,13 @@ namespace PBL3Hos.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Fullname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImgFile")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
@@ -207,6 +214,45 @@ namespace PBL3Hos.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("PBL3Hos.Models.DbModel.AppointmentCancel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Availabale")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DoctorId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("FullnameDoctor")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullnamePatient")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PatientId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DoctorId");
+
+                    b.HasIndex("PatientId");
+
+                    b.ToTable("AppointmentCancels");
+                });
+
             modelBuilder.Entity("PBL3Hos.Models.DbModel.AppointmentDB", b =>
                 {
                     b.Property<int>("Id")
@@ -226,6 +272,9 @@ namespace PBL3Hos.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("Symptom")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("DoctorId");
@@ -234,6 +283,38 @@ namespace PBL3Hos.Migrations
                         .IsUnique();
 
                     b.ToTable("Appointments");
+                });
+
+            modelBuilder.Entity("PBL3Hos.Models.DbModel.AppointmentHistory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DoctorId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("PatientId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Rate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DoctorId");
+
+                    b.HasIndex("PatientId");
+
+                    b.ToTable("AppointmentHistory");
                 });
 
             modelBuilder.Entity("PBL3Hos.Models.DbModel.DoctorAvailability", b =>
@@ -254,7 +335,6 @@ namespace PBL3Hos.Migrations
                         .HasColumnType("time");
 
                     b.Property<string>("Shift")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<TimeSpan>("StartTime")
@@ -314,6 +394,79 @@ namespace PBL3Hos.Migrations
                     b.ToTable("DoctorSchedules");
                 });
 
+            modelBuilder.Entity("PBL3Hos.Models.DbModel.Rating", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Detail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DoctorId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("PatientId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<double>("Star")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DoctorId");
+
+                    b.HasIndex("PatientId");
+
+                    b.ToTable("Ratings");
+                });
+
+            modelBuilder.Entity("PBL3Hos.Models.DbModel.Specialist", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("SpecialistName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Specialists");
+                });
+
+            modelBuilder.Entity("PBL3Hos.Models.DbModel.Statistic", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<double>("AmountHours")
+                        .HasColumnType("float");
+
+                    b.Property<int>("AmountPatient")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DoctorId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DoctorId");
+
+                    b.ToTable("Statistics");
+                });
+
             modelBuilder.Entity("PBL3Hos.Models.DbModel.UserDoctor", b =>
                 {
                     b.Property<string>("id")
@@ -324,12 +477,38 @@ namespace PBL3Hos.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("Career")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("DoctorRate")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Fullname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImgFile")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("NameDoctor")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Specialist")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("qualification")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("studyprocess")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("yearofexperience")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
@@ -348,6 +527,13 @@ namespace PBL3Hos.Migrations
                     b.Property<string>("AccountId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Fullname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImgFile")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NamePatient")
                         .IsRequired()
@@ -406,6 +592,25 @@ namespace PBL3Hos.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("PBL3Hos.Models.DbModel.AppointmentCancel", b =>
+                {
+                    b.HasOne("PBL3Hos.Models.DbModel.UserDoctor", "Doctor")
+                        .WithMany("AppointmentCancels")
+                        .HasForeignKey("DoctorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("PBL3Hos.Models.DbModel.UserPatient", "Patient")
+                        .WithMany("AppointmentCancels")
+                        .HasForeignKey("PatientId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Doctor");
+
+                    b.Navigation("Patient");
+                });
+
             modelBuilder.Entity("PBL3Hos.Models.DbModel.AppointmentDB", b =>
                 {
                     b.HasOne("PBL3Hos.Models.DbModel.UserDoctor", "Doctor")
@@ -418,6 +623,25 @@ namespace PBL3Hos.Migrations
                         .WithOne("Appointment")
                         .HasForeignKey("PBL3Hos.Models.DbModel.AppointmentDB", "PatientId")
                         .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Doctor");
+
+                    b.Navigation("Patient");
+                });
+
+            modelBuilder.Entity("PBL3Hos.Models.DbModel.AppointmentHistory", b =>
+                {
+                    b.HasOne("PBL3Hos.Models.DbModel.UserDoctor", "Doctor")
+                        .WithMany()
+                        .HasForeignKey("DoctorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("PBL3Hos.Models.DbModel.UserPatient", "Patient")
+                        .WithMany()
+                        .HasForeignKey("PatientId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Doctor");
@@ -458,6 +682,36 @@ namespace PBL3Hos.Migrations
                     b.Navigation("Doctor");
                 });
 
+            modelBuilder.Entity("PBL3Hos.Models.DbModel.Rating", b =>
+                {
+                    b.HasOne("PBL3Hos.Models.DbModel.UserDoctor", "Doctor")
+                        .WithMany("Ratings")
+                        .HasForeignKey("DoctorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("PBL3Hos.Models.DbModel.UserPatient", "Patient")
+                        .WithMany("Ratings")
+                        .HasForeignKey("PatientId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Doctor");
+
+                    b.Navigation("Patient");
+                });
+
+            modelBuilder.Entity("PBL3Hos.Models.DbModel.Statistic", b =>
+                {
+                    b.HasOne("PBL3Hos.Models.DbModel.UserDoctor", "Doctor")
+                        .WithMany()
+                        .HasForeignKey("DoctorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Doctor");
+                });
+
             modelBuilder.Entity("PBL3Hos.Models.DbModel.UserDoctor", b =>
                 {
                     b.HasOne("PBL3Hos.Identity.AppUser", "AppUser")
@@ -482,13 +736,21 @@ namespace PBL3Hos.Migrations
 
             modelBuilder.Entity("PBL3Hos.Models.DbModel.UserDoctor", b =>
                 {
+                    b.Navigation("AppointmentCancels");
+
                     b.Navigation("Appointments");
+
+                    b.Navigation("Ratings");
                 });
 
             modelBuilder.Entity("PBL3Hos.Models.DbModel.UserPatient", b =>
                 {
                     b.Navigation("Appointment")
                         .IsRequired();
+
+                    b.Navigation("AppointmentCancels");
+
+                    b.Navigation("Ratings");
                 });
 #pragma warning restore 612, 618
         }

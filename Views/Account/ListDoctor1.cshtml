@@ -1,0 +1,38 @@
+﻿@model List<PBL3Hos.Models.DbModel.UserDoctor>
+@{
+    ViewData["Title"] = "ListDoctor1";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<link rel="stylesheet" href="~/css/booking.css?v=4" asp-append-version="true" />
+
+<div class="list-doctor">
+    <div class="wrap-list-doctor">
+        @foreach (var item in Model)
+        {
+            <a href="/account/infoDoctor/@item.AccountId">
+                <div class="doctor">
+                    @if (item.ImgFile == null)
+                    {
+                        <div class="img-doctor"><img src="https://assets-global.website-files.com/64b0d564635cb0e2d09ac7dd/64df4fd41bbf90309dad5fb9_cta-p-500.png" alt=""></div>
+                    }
+                    else
+                    {
+                        <div class="img-doctor"><img src="~/PatientsIMG/@item.ImgFile" alt=""></div>
+
+                    }
+                    <div class="info-doctor">
+                        <p>Cardiologist</p>
+                        <h3>@item.Fullname</h3>
+                    </div>
+                </div>
+            </a>
+        }
+
+
+    </div>
+
+    <script src="~/js/booking.js"></script>
+
+
+
+

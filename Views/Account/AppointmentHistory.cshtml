@@ -1,0 +1,135 @@
+﻿@model List<PBL3Hos.Models.DbModel.AppointmentHistory>
+@{
+    ViewData["Title"] = "ListAppointment";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+
+}
+
+@* <h1>ListAppointment</h1>
+<table class="table">
+    <tr>
+
+        <th>Doctor UserName</th>
+        <th>Date</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(row => item.Doctor.AppUser.Fullname)</td>
+            <td>@item.Date.ToString("dd/MM/yyyy HH:mm:ss")</td>
+
+        </tr>
+    }
+</table> *@
+
+
+
+    <!-- header -->
+    
+    <!-- content -->
+    <!-- Page Content  -->
+<link rel="stylesheet" href="~/css/listAppointment.css?v=5">
+<link rel="stylesheet" href="~/css/Rate.css?v=6" asp-append-version="true" />
+
+<!-- RATE -->
+<form action="/account/Rating" method="post">
+    <input type="hidden" name="DoctorId" value="" />
+    <input type="hidden" name="PatientId" value="@ViewBag.Userid" />
+    <input type="hidden" name="AppointmentHistoryId" value="" />
+
+<div class="rate-container js-container-rate">
+    <div class="rate-content">
+        <i class="fa-solid fa-xmark js-close-rate"></i>
+        <h2>Rate your experience</h2>
+        <p>We appreciate your feedback! Please take a moment to rate your experience and provide us with your valuable feedback.</p>
+        <div class="star">
+            <div class="rating">
+                <input value="5" name="rate" id="star5" type="radio">
+                <label title="text" for="star5"></label>
+                <input value="4" name="rate" id="star4" type="radio">
+                <label title="text" for="star4"></label>
+                <input value="3" name="rate" id="star3" type="radio">
+                <label title="text" for="star3"></label>
+                <input value="2" name="rate" id="star2" type="radio">
+                <label title="text" for="star2"></label>
+                <input value="1" name="rate" id="star1" type="radio">
+                <label title="text" for="star1"></label>
+            </div>
+        </div>
+        <div class="comment">
+                <textarea class="text-area" rows="6" cols="70" name="Detail"></textarea>
+                <button type="submit">Send</button>
+        </div>
+        
+    </div>
+</div>
+</form>
+    <div id="content">
+        <div class="header">
+            <h1>Appointment Booking</h1>
+        </div>
+        <div class="container container-doctor-table">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <!-- Grid row -->
+                    <div class="row">
+                        <!-- Grid column -->
+                    <form action="/account/appointmenthistory">
+                        <div class="col-md-12 header-list-doctor">
+                            <h4 class=" mb-4">Date Made Appointment</h4>
+                       
+                            <input name="Date" class="date-make-appointment" type="date">
+                            <td><button type="submit" class="button-table mb-4 btn-search">Search</button></td>
+                        
+                        </div>
+                    </form>
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Grid row -->
+                    <!--Table-->
+                    <div class="table-doctor">
+                        <table class="table table-striped">
+                            <!--Table head-->
+                            <thead>
+                                 
+                                <tr>
+                                    <th>Name Doctor</th>
+                                    <th>Speciality</th>
+                                    <th>Phone Number</th>
+                                    <th>Time</th>
+                                </tr>
+                                   
+                            </thead>
+                            <!--Table head-->
+                            <!--Table body-->
+                            <tbody>
+                                 @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(row => item.Doctor.AppUser.UserName)</td>
+                                    <td>@Html.DisplayFor(row => item.Doctor.Specialist)</td>
+                                    <td>@Html.DisplayFor(row => item.Doctor.AppUser.PhoneNumber)</td>
+                                    <td>@item.Date.ToString()</td>
+                                    <td><button class="button-table"><a href="/account/appointment/@item.Doctor.AccountId" class="text">Rebook</a></button></td>
+                                    @if(item.Rate=="Unrate"){
+                                        <td><button class="button-table js-open-rate" data-doctor-id="@item.DoctorId" data-appointment-history-id="@item.Id">Rating</button></td>
+                                    }
+                                    else if(item.Rate=="Rated")
+                                    {
+                                        <td><button class="button-table disabled js-open-rate" disabled>Rated</button></td>
+
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                            <!--Table body-->
+                        </table>
+                    </div>
+                    <!--Table-->
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="~/js/Rate.js?v=1"></script>
+

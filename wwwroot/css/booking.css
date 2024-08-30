@@ -1,0 +1,232 @@
+﻿body {
+}
+.wpapper-calendar {
+    background-color: #fff;
+    width: 450px;
+    border-radius: 10px;
+    border: 2px solid;
+}
+
+    .wpapper-calendar header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 10px 0;
+    }
+
+    .wpapper-calendar p {
+        font-size: 1.6rem;
+        font-weight: 1000;
+        margin-left: 50px;
+    }
+
+    .wpapper-calendar .icond i {
+        width: 38px;
+        height: 38px;
+        font-size: 25px;
+        justify-content: center;
+        text-align: center;
+        line-height: 38px;
+        border-radius: 50%;
+        cursor: pointer;
+        margin-right: 5px;
+    }
+
+        .wpapper-calendar .icond i:hover {
+            background-color: #f2f2f2;
+        }
+
+.calendar {
+    padding: 20px;
+}
+
+    .calendar ul {
+        display: flex;
+        list-style: none;
+        flex-wrap: wrap;
+        text-align: center;
+        padding: 0;
+    }
+
+        .calendar ul li {
+            width: calc(100% / 7);
+            position: relative;
+            margin-bottom: 5px;
+        }
+
+    .calendar .weeks li {
+        font-weight: 700;
+    }
+
+    .calendar .days li {
+        cursor: pointer;
+        margin-top: 20px;
+        z-index: 1;
+    }
+
+        .calendar .days li::before {
+            position: absolute;
+            content: "";
+            width: 40px;
+            height: 40px;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+.days li:hover::before {
+    background-color: #f2f2f2;
+}
+
+.days li.inactive {
+    color: #aaa;
+}
+
+.days li.active::before {
+    background-color: #9b59b6
+}
+
+.days li.active {
+    color: #fff;
+}
+
+.input-calendar {
+    display: none;
+}
+/* Thêm định dạng cho ngày được chọn */
+.days li.selected::before {
+    background-color: rgb(78, 127, 242); /* Đặt màu nền khi người dùng click */
+}
+
+.days li.selected {
+    color: white; /* Đổi màu chữ để nổi bật trên màu nền */
+}
+/* css content */
+.header {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    background-color: #c3e4ff;
+    border-bottom: 1px solid #000;
+    justify-content: center;
+    align-items: center;
+}
+
+    .header h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 0px 0px;
+    }
+
+.input-form {
+    display: flex;
+    margin: 70px 70px;
+    justify-content: space-between;
+    border-radius: 10px;
+    border: 1px solid #000;
+    background-color: #c3e4ff;
+}
+
+    .input-form .input-layout {
+        margin: 0 100px;
+        justify-items: center;
+        align-items: center;
+    }
+
+        .input-form .input-layout .input-box {
+            margin-top: 50px;
+        }
+
+        .input-form .input-layout .select-container select {
+            width: 157px;
+            height: 50px;
+            border-radius: 8px;
+            border: 3px solid #007add;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .input-form .input-layout .login-home-button {
+            margin-top: 80px;
+        }
+
+    .input-form .contact-layout {
+        width: 400px;
+        padding: 0 30px;
+        background-color: #007add65;
+        border-left: 1px solid #000;
+    }
+
+        .input-form .contact-layout h3 {
+            margin-top: 70px;
+            font-size: 25px;
+        }
+
+        .input-form .contact-layout p {
+            font-size: 18px;
+        }
+
+        .input-form .contact-layout ul {
+            margin-top: 50px;
+            margin-left: -20px;
+            list-style: none;
+        }
+/* css list doctor */
+.list-doctor .wrap-list-doctor {
+    margin: 70px 70px;
+    display: flex;
+    overflow: hidden;
+    flex-wrap: wrap;
+    /* border-top: 1px solid #000;
+    border-bottom: 1px solid #000; */
+}
+
+    .list-doctor .wrap-list-doctor a {
+        text-decoration: none;
+        color: #000;
+        transition: ease 0.15s;
+        transition-delay: 0.15s;
+        margin: 0 40px;
+    }
+
+    .list-doctor .wrap-list-doctor .doctor {
+        width: 300px;
+        height: 350px;
+        margin: 20px 20px;
+    }
+
+        .list-doctor .wrap-list-doctor .doctor .img-doctor {
+            width: 299px;
+            height: 300px;
+            background-color: #c3e4ff;
+            border: 1px solid #000;
+            border-radius: 10px;
+        }
+
+            .list-doctor .wrap-list-doctor .doctor .img-doctor img {
+                width: 297px;
+                height: 298px;
+                border-radius:10px;
+            }
+
+    .list-doctor .wrap-list-doctor a:hover {
+        transform: scale(1.05);
+    }
+
+    .list-doctor .wrap-list-doctor .info-doctor {
+        margin-left: 5px;
+    }
+
+        .list-doctor .wrap-list-doctor .info-doctor p {
+            margin: 0px 0px;
+            opacity: 0.7;
+        }
+
+        .list-doctor .wrap-list-doctor .info-doctor h3 {
+            font-weight: 900 !important;
+            font-size: 25px;
+            margin: 0px 0px;
+        }
